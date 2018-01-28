@@ -1,0 +1,21 @@
+{% for item in ['From', 'Until'] %}
+    <div class="form-group form-group-related">
+        <fieldset>
+            <legend>
+                <span class="form-label">{{ item }}</span>
+            </legend>
+            <label class="visually-hidden" for="hours">Hours</label>
+            <select id="hours" class="form-control time-control" name="{{ item }}Hours">
+                {% for i in range(8, 18) %}
+                <option value="{% if i < 10 %}0{% endif %}{{ i }}">{% if i < 10 %}0{% endif %}{{ i }}</option>
+                {% endfor %}
+            </select>
+            <label class="visually-hidden" for="minutes">Minutes</label>
+            <select id="minutes" class="form-control time-control" name="{{ item }}Minutes">
+                {% for i in ['00', '15', '30', '45'] %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+    </div>
+{% endfor %}

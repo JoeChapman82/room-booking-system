@@ -1,0 +1,15 @@
+<div class="calendar">
+    <ol class="times" aria-hidden="true">
+        {% for i in range(8, 17) %}
+            <li class="time" data-time="{{ i }}:00">{{ i }}:00</li>
+            <li class="time half-hour" data-time="{{ i }}:30"></li>
+        {% endfor %}
+    </ol>
+    <dl class="bookings">
+        {% for booking in bookings %}
+            <dt class="visually-hidden">start end</dt>
+            <dd class="booking">description name</dd>
+        {% endfor %}
+    </dl>
+    <p class="now">now<span>now time</span></p>
+</div>

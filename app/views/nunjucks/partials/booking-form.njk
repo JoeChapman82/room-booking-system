@@ -1,0 +1,11 @@
+<div class="column-third">
+    <form class="" action="{{ postUrl }}" method="post">
+        {{ typography.heading('Book ' + room.name, '2', 'heading-medium') }}
+        {{ typography.paragraph(today | asReadableDate, 'lede') }}
+        {{ forms.textInput('reason', 'Reason for booking', '', errors.reason, true) }}
+        {{ forms.textInput('name', 'Full name', '', errors.name, true) }}
+        {{ forms.textInput('email', 'Email address', '', errors.email, true) }}
+        {% include "nunjucks/partials/time-select.njk" %}
+        {{ forms.submitInput('submit') }}
+    </form>
+</div>

@@ -1,0 +1,22 @@
+{% macro chooseRoom(rooms) %}
+    <table>
+      <thead>
+        <tr>
+          <th>Room name</th>
+          <th>Equipment</th>
+          <th>Sitting capacity</th>
+          <th>Standing capacity</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for room in rooms %}
+              <tr>
+                  <td><a href="/book/{{ room._id }}">{{ room.name }}</a></td>
+                  <td>{{ room.equipment | join(',')}}</td>
+                  <td>{{ room.sitting }}</td>
+                  <td>{{ room.standing }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+{% endmacro %}

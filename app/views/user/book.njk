@@ -1,0 +1,35 @@
+{% extends "nunjucks/templates/govuk_template.njk" %}
+{% import "nunjucks/macros/typography.njk" as typography %}
+{% import "nunjucks/macros/tables.njk" as tables %}
+{% import "nunjucks/macros/forms.njk" as forms %}
+
+{% block page_title %}Book a room{% endblock %}
+
+{% block pre_content %}
+    {{ typography.link ('Choose a room', '/choose', 'link-back')}}
+    {% if success and booked %}
+        {{ typography.paragraph('Details of the booking and how to cancel have been emailed to you.' )}}
+        {{ typography.paragraph('If you require visitors to be booked on site or VC equipment, you will need to do this separately.' )}}
+        {% include "nunjucks/partials/unbook-room.njk" %}
+    {% elif success and unbooked %}
+        {{ typography.paragraph('Booking cancelled' )}}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="column-full">
+         {{ typography.mainHeading(room.name, 'heading-xlarge') }}
+         {% include 'nunjucks/partials/room-details.njk' %}
+    </div>
+
+    <div class="column-two-thirds">
+        {% include 'nunjucks/partials/date-picker.njk' %}
+        {% include "nunjucks/partials/calendar.njk" %}
+    </div>
+
+    {% if true === true %}
+        {% include "nunjucks/partials/booking-form.njk" %}
+    {% endif %}
+
+{% endblock %}
