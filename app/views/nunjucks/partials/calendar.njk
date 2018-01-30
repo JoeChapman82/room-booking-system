@@ -1,6 +1,6 @@
 <div class="calendar">
     <ol class="times" aria-hidden="true">
-        {% for i in range(8, 17) %}
+        {% for i in range(8, 19) %}
             <li class="time" data-time="{{ i }}:00">{{ i }}:00</li>
             <li class="time half-hour" data-time="{{ i }}:30"></li>
         {% endfor %}
@@ -8,8 +8,10 @@
     <dl class="bookings">
         {% for booking in bookings %}
             <dt class="visually-hidden">start end</dt>
-            <dd class="booking">description name</dd>
+            <dd style="height: {{ booking.start | calculateHeight(booking.end) }}; top: {{ booking.start | positionFromTop }}" class="booking">{{ booking.description }}: {{ booking.name }}</dd>
         {% endfor %}
     </dl>
-    <p class="now">now<span>now time</span></p>
+    {% if now %}
+    <p class="now" style="{{ now | positionFromTop }}">now<span>now time</span></p>
+    {% endif %}
 </div>

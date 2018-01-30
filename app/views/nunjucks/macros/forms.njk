@@ -17,3 +17,7 @@
 {% macro submitInput(value, type, name) %}
 <input {% if name %}id="{{ name }}" name="{{ name }}"{% endif %}class="button {% if type %}{{ type }}{% endif %}" type="submit" name="submit" value="{{ value }}">
 {% endmacro %}
+
+{% macro hiddenInput(id, value) %}
+<input id="{{ id }}" name="{{ id }}" type="hidden" name="submit" value="{{ value }}">
+{% endmacro %}

@@ -44,3 +44,13 @@ document.querySelectorAll('.time').forEach(function(time) {
     });
 
 });
+
+document.querySelectorAll('.date-picker-input').forEach(function(input) {
+    input.addEventListener('blur', reloadOnDateChange);
+});
+
+function reloadOnDateChange() {
+    if(this.value !== this.dataset.original) {
+        document.getElementById('changeDate').click();
+    }
+}

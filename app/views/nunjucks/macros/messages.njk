@@ -1,0 +1,62 @@
+{% macro bookingSuccess(postUrl, roomId) %}
+
+    <div class="success-summary" role="group" tabindex="-1">
+        <form class="" action="{{ postUrl }}" method="post">
+
+      <h2 class="heading-small success-summary-heading no-margin-heading" id="successSummary">
+        Room booked
+      </h2>
+
+      <p><strong class="strong">Details of the booking and how to cancel have been emailed to you.</strong></p>
+
+      <p>If you require visitors to be booked on site or VC equipment, you will need to do this separately.</p>
+      <input type="hidden" name="bookedRoom" value="{{ roomId }}">
+      <input class="button cancel-booking-button" type="submit" name="submit" value="Undo">
+  </form>
+  <div class="clearfix"></div>
+
+    </div>
+{% endmacro %}
+
+{% macro bookingCancelled() %}
+    <div class="success-summary" role="group" tabindex="-1">
+      <h2 class="heading-small success-summary-heading no-margin-heading" id="successSummary">
+        Booking cancelled
+      </h2>
+      <p><strong class="strong">Your booking has been removed</strong></p>
+
+    </div>
+{% endmacro %}
+
+{% macro success(successes, heading, lede) %}
+    <div class="success-summary" role="group" tabindex="-1">
+
+      <h2 class="heading-small success-summary-heading no-margin-heading" id="successSummary">
+        {{ heading }}
+      </h2>
+
+      <p>{{ lede }}</p>
+
+      <ul class="success-summary-list">
+          {% for key, value in successes %}
+          <li>{{ value.msg | safe }}</li>
+          {% endfor %}
+      </ul>
+
+    </div>
+{% endmacro %}
+
+{% macro error(errors) %}
+<div class="error-summary" role="group" aria-labelledby="error-summary" tabindex="-1">
+
+    <h1 class="heading-medium error-summary-heading no-margin-heading" id="errorSummary">
+    An error has occured
+    </h1>
+    <p>You must: </p>
+    <ul class="error-summary-list">
+        {% for key, value in errors %}
+        <li><a href="#{{ value.param }}">{{ value.msg }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endmacro %}

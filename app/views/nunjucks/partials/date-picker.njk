@@ -5,23 +5,29 @@
                 <span class="form-label-bold">
                     Date
                 </span>
-                <span class="error-message">{{ errors.date.msg }}</span>
+                {% if errors.dateDay.msg %}
+                <span class="error-message">{{ errors.dateDay.msg }}</span>
+                {% elif errors.dateMonth.msg %}
+                <span class="error-message">{{ errors.dateMonth.msg }}</span>
+                {% elif errors.dateYear.msg %}
+                <span class="error-message">{{ errors.dateYear.msg }}</span>
+                {% endif %}
             </legend>
             <div class="form-date">
                 <div class="form-group form-group-day">
-                    <label class="form-label" for="datePickerDay">Day</label>
-                    <input class="form-control" id="datePickerDay" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+                    <label class="form-label" for="dateDay">Day</label>
+                    <input value="{{ today.dateDay }}" class="form-control date-picker-input {% if errors.dateDay %}form-control-error{% endif %}" id="dateDay" name="dateDay" type="number" data-original="{{ today.dateDay }}">
                 </div>
                 <div class="form-group form-group-month">
-                    <label class="form-label" for="datePickerMonth">Month</label>
-                    <input class="form-control" id="datePickerMonth" name="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+                    <label class="form-label" for="dateMonth">Month</label>
+                    <input value="{{ today.dateMonth }}" class="form-control date-picker-input {% if errors.dateMonth %}form-control-error{% endif %}" id="dateMonth" name="dateMonth" type="number" data-original="{{ today.dateMonth }}">
                 </div>
                 <div class="form-group form-group-year">
-                    <label class="form-label" for="datePickerYear">Year</label>
-                    <input class="form-control" id="datePickerYear" name="dob-year" type="number" pattern="[0-9]*" min="0" max="2016">
+                    <label class="form-label" for="dateYear">Year</label>
+                    <input value="{{ today.dateYear }}" class="form-control date-picker-input {% if errors.dateYear %}form-control-error{% endif %}" id="dateYear" name="dateYear" type="number" data-original="{{ today.dateYeay }}">
                 </div>
             </div>
-            <input id="changeDate" type="submit" class="button date-picker-submit" name="changeDate" value="Change date">
+            <input id="changeDate" type="submit" class="button date-picker-submit" name="submit" value="Change date">
         </fieldset>
     </div>
 </form>

@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 const path = require('path');
 const helmet = require('helmet');
-const expressValidator = require('express-validator');
 const express = require('express');
 
 // const sanitiserConfig = require('./sanitiser/config/customSanitisers');
@@ -69,6 +68,17 @@ module.exports = (app) => {
             return formedDate;
     });
 
+    nunjucksEnv.addFilter('positionFromTop', (time) => {
+        let date = new Date(time.getFullYear(), time.getMonth(), time.getDate(), 8);
+        let startPosition = ((time - date) / 1000 / 60 / 60 * 9.09);
+        return `${startPosition}%`;
+    });
+
+    nunjucksEnv.addFilter('calculateHeight', (from, to) => {
+        let height = ((to - from) / 1000 / 60 / 60 * 9.09);
+        return `${height}%`;
+    });
+
     nunjucksEnv.addFilter('sliceIt', (string, position, insert) => {
         return `${string.slice(0, position)}${insert}${string.slice(position)}`;
     });
@@ -76,7 +86,6 @@ module.exports = (app) => {
     app.use(cookieParser(process.env.COOKIE_SECRET));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded( {extended : false} ));
-
 
     // app.use(csrf({cookie: {maxAge: config.csrfLifespan, httpOnly: true, signed: true, secure: true}}));
 
@@ -94,13 +103,6 @@ module.exports = (app) => {
     //         res.status(403);  // TODO need to move somethings gone wrong into unprotected routes - this will be a pain
     //         res.redirect('/');
     //     });
-
-    // validator has to be directly after bodyParser
-    // available methods here: https://github.com/chriso/validator.js/tree/master/lib
-    app.use(expressValidator({
-        // customSanitizers: sanitiserConfig.customSanitisers,
-        // customValidators: validatorConfig.customValidators
-    }));
 
     return app;
 };

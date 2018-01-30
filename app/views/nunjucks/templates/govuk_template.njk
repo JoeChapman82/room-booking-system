@@ -80,7 +80,7 @@
                 {% block pre_content %}{% endblock %}
             </div>
         </div>
-        
+
         <div class="grid-row">
 
             {% block content %}{% endblock %}
@@ -96,8 +96,12 @@
         <div class="footer-meta">
           <div class="footer-meta-inner">
             {% block footer_support_links %}{% endblock %}
-
+            <ul>
+                <li>Made by Burbank for the <a href="/">Deparment for Work and Pensions</a></li>
+                <li style="display: block;">Designed in Newcastle</li>
+            </ul>
             <div class="open-government-licence">
+
               <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
 
                 {% block licence_message %}<p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>{% endblock %}
