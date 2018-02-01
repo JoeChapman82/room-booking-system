@@ -6,8 +6,6 @@
     <h1 class="heading heading-xlarge main-heading"><span class="heading-secondary">{{ span }}</span>{{ content }}</h1>
 {% endmacro %}
 
-
-
 {% macro heading(content, type, class, id) %}
     <h{{ type }} {% if if %}id="{{ id }}"{% endif %} {% if class %}class="{{class}}"{% endif %}>{{ content }}</h{{ type}}>
 {% endmacro %}

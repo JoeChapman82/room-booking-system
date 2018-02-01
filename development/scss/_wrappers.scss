@@ -1,0 +1,60 @@
+.column-third {
+    padding-left: 3rem;
+}
+
+.form-control-full {
+    width: 100%;
+}
+
+.room-details {
+    line-height: 0.3;
+}
+
+.date-picker {
+    position: relative;
+}
+
+.date-picker-submit {
+    position: absolute;
+    bottom: 2px;
+}
+
+.super-home-wrapper {
+    margin-top: 2rem;
+}
+
+.header-logout-form {
+    display: inline-block;
+}
+
+.file-upload-wrapper {
+    padding: 3rem 0;
+    border: 2px solid $black;
+    width: 50%;
+    padding-left: 2rem;
+    border-radius: 3px;
+    background-color: $grey-4;
+    box-sizing: border-box;
+}
+
+@media screen and(max-width: 950px) {
+    .file-upload-wrapper {
+        width: 75%;
+    }
+}
+
+@media screen and(max-width: 640px) {
+    .date-picker-submit {
+        position: relative;
+        width: 75%;
+        margin-top: 1rem;
+    }
+
+    .file-upload-wrapper {
+        width: 100%;
+    }
+
+    .file-upload-wrapper input {
+        width: 90%;
+    }
+}

@@ -1,63 +1,16 @@
 @import 'govuk-elements';
 
-.main-logo,
-.main-logo:visited,
-.main-logo:active  {
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 1;
-    text-decoration: none;
-    text-rendering: optimizeLegibility;
-    border-bottom: 1px solid transparent;
-}
-
-.main-heading {
-    margin-bottom: 2rem;
-}
-
-.clearfix {
-    display: block;
-    clear: both;
-}
-
-.lede {
-    margin-bottom: 0;
-}
-
-.strong,
-strong {
-    font-weight: bold;
-}
-
-.room-details {
-    line-height: 0.3;
-}
-
-.date-picker {
-    position: relative;
-}
-
-.date-picker-submit {
-    position: absolute;
-    bottom: 2px;
-}
-
-@media screen and(max-width: 640px) {
-        .date-picker-submit {
-            position: relative;
-            width: 75%;
-            margin-top: 1rem;
-    }
-}
-
-.column-third {
-    padding-left: 3rem;
-}
-
-.form-control-full {
-    width: 100%;
-}
+@import 'typography';
+@import 'tables';
+@import 'links';
+@import 'helpers';
+@import 'tables';
+@import 'wrappers';
+@import 'navigation';
+@import 'calendar';
+@import 'messages';
+@import 'buttons';
+@import 'inputs';
 
 .time-control {
     margin-right: .5em;
@@ -68,160 +21,8 @@ strong {
     margin-bottom: 3rem;
 }
 
-.previous-next-navigation {
-    list-style-type: none;
-    font-size: 1.5em;
-    margin-bottom: 2rem;
-}
-
-.previous-next-navigation a {
-    text-decoration: none;
-    outline: none;
-    color: #005ea5;
-}
-
-.date-nav-svg-right {
-    width: 2.2em;
-    height: 2.2em;
-    margin-left: -.5em;
-    vertical-align: middle;
-}
-
-.date-nav-svg-left {
-    width: 2.2em;
-    height: 2.2em;
-    margin-right: -.5em;
-    vertical-align: middle;
-}
-
-.previous {
-    float: left;
-}
-
-.next {
-    float: right;
-}
-
-.no-margin-heading {
-    margin-top: 0;
-}
-
-.additional-margin-heading {
-    margin-bottom: 2rem;
-}
-
-
-// calender view
-.calendar {
-  margin-top: .6em;
-  position: relative;
-}
-
-.time {
-  border-top: 1px solid $border-colour;
-  color: $secondary-text-colour;
-  font-size: 16px;
-  // height: 3.3em;
-  height: 1.75em;
-  line-height: .1;
-  margin-left: 3em;
-  text-indent: -3em;
-}
-
-.provisional-date {
-    background: lightblue;
-    background: linear-gradient(to right, $white 13.5%, $white 13.5%, lightblue 13.5%);
-}
-
-.half-hour {
-    border-top: 0;
-}
-
-.booking {
-  @include box-sizing(border-box);
-
-  background: $govuk-blue;
-  color: $white;
-  font-size: 16px;
-  left: 20%;
-  padding: 4px 5px;
-  position: absolute;
-  width: 80%;
-  overflow: hidden;
-
-  &:nth-child(4n) {
-    background-color: $purple;
-  }
-}
-
-.now {
-  border-top: 2px solid $black;
-  height: 1.3em;
-  left: 10%;
-  margin: 0;
-  position: absolute;
-  width: 90%;
-}
-
-.now-time {
-  background: $black;
-  color: $white;
-  float: left;
-  font-size: 12px;
-  margin-top: -.8em;
-  padding: 2px 3px 0;
-}
-
-
-// messages
-.success-summary {
-    border: 4px solid $button-colour;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    padding: 15px 10px;
-}
-
-@media (min-width: 641px) {
-    .success-summary {
-        border: 5px solid $button-colour;
-        margin-bottom: 5px;
-        margin-top: 5px;
-        padding: 20px 15px 15px; }
- }
-
-.success-summary:focus {
-    outline: 3px solid $focus-colour;
-}
-
-.success-summary .success-summary-heading {
-    margin-top: 0;
-}
-
-.success-summary p {
-    margin-bottom: 10px;
-}
-
-.success-summary .success-summary-list {
-    padding-left: 0;
-    color: $button-colour;
-}
-
-@media (min-width: 641px) {
-    .success-summary .success-summary-list li {
-        margin-bottom: 5px;
-    }
-}
-
-.success-summary .success-summary-list a {
-    color: $button-colour;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.success-summary-heading {
-    color: $button-colour;
-}
-
-.cancel-booking-button {
-    float: right;
+label,
+input[type='text'],
+input[type='password'] {
+    display: block;
 }

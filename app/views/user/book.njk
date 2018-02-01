@@ -11,8 +11,7 @@
     {{ typography.link ('Choose a room', '/choose', 'link-back') }}
 
     {% if booked %}
-        {{ messages.bookingSuccess('/book/' + room._id, bookedRoom) }}
-        {# {% include "nunjucks/partials/unbook-room.njk" %} #}
+        {{ messages.bookingSuccess('/book-cancel/' + room._id, bookedRoom) }}
     {% elif unbooked %}
         {{ messages.bookingCancelled() }}
     {% endif %}

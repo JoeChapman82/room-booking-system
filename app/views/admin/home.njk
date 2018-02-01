@@ -1,0 +1,21 @@
+{% extends "nunjucks/templates/govuk_template.njk" %}
+{% import "nunjucks/macros/typography.njk" as typography %}
+{% import "nunjucks/macros/forms.njk" as forms %}
+{% import "nunjucks/macros/messages.njk" as messages %}
+
+
+{% block page_title %}Home{% endblock %}
+
+{% block pre_content %}
+    {{ typography.mainHeading ('Home') }}
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="column-two-thirds">
+        <p>Todo admin home</p>
+        <p>needs seatch by description, find room, delete booking</p>
+    </div>
+
+{% endblock %}

@@ -14,10 +14,59 @@
 </div>
 {% endmacro %}
 
+{% macro textInputSmall(id, label, value, error, related, hintText, readonly) %}
+<div class="form-group{% if related %}-related{% endif %}{% if error %} form-group-error{% endif %}">
+    <label class="form-label-bold block-label" for="{{ id }}">{{ label }}
+        {% if hintText %}
+            <span class="form-hint">
+                {{ hintText }}
+            </span>
+        {% endif %}
+        {% if error %}
+            <span class="error-message">{{ error.msg }}</span>
+        {% endif %}
+        <input id="{{ id }}" class="form-control {% if error %}form-control-error{% endif %} block-input" type="text" name="{{ id }}" value="{{ value }}" {% if readonly %}readonly{% endif %}>
+    </label>
+</div>
+{% endmacro %}
+
+{% macro passwordInput(id, label, value, error, related, hintText, readonly, size) %}
+<div class="{% if ieHidden %}ie-hidden {% endif %}form-group{% if related %}-related{% endif %}{% if error %} form-group-error{% endif %}">
+    <label class="form-label-bold block-label" for="{{ id }}">{{ label }}
+        {% if hintText %}
+            <span class="form-hint">
+                {{ hintText }}
+            </span>
+        {% endif %}
+        {% if error %}
+            <span class="error-message">{{ error.msg }}</span>
+        {% endif %}
+        <input id="{{ id }}" class="{% if ieHidden %}ie-hidden {% endif %}form-control{% if size %} form-control-{{ size }}{% endif %}{% if error %} form-control-error{% endif %} block-input" type="password" name="{{ id }}" value="{{ value }}" {% if readonly %}readonly{% endif %}>
+    </label>
+</div>
+{% endmacro %}
+
+{% macro fileInput(id, label, value, error, related, hintText) %}
+<div class="form-group{% if related %}-related{% endif %} {% if error %}form-group-error{% endif %}">
+    <label class="form-label-bold block-label" for="{{ id }}">
+        {{ label }}
+    </label>
+    {% if hintText %}
+        <span class="form-hint">
+            {{ hintText }}
+        </span>
+    {% endif %}
+    {% if error %}
+        <span class="error-message">{{ error.msg }}</span>
+    {% endif %}
+    <input id="{{ id }}" name="{{ id }}" type="file">
+</div>
+{% endmacro %}
+
 {% macro submitInput(value, type, name) %}
 <input {% if name %}id="{{ name }}" name="{{ name }}"{% endif %}class="button {% if type %}{{ type }}{% endif %}" type="submit" name="submit" value="{{ value }}">
 {% endmacro %}
 
 {% macro hiddenInput(id, value) %}
-<input id="{{ id }}" name="{{ id }}" type="hidden" name="submit" value="{{ value }}">
+    <input id="{{ id }}" name="{{ id }}" type="hidden" name="submit" value="{{ value }}">
 {% endmacro %}

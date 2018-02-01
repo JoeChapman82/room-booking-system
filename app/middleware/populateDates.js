@@ -33,10 +33,11 @@ module.exports = (req, res, next) => {
     res.locals.isBeforeToday = isDateBeforeToday(today);
 
     if(!isBody && !isQuery && !req.body.date) {
-         res.locals.now = new Date();
+        let nowDate = new Date();
+        if(nowDate.getHours() > 7 && nowDate.getHours < 19) {
+            res.locals.now = nowDate;
+        }
      }
-
-
     next();
 };
 

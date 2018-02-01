@@ -64,9 +64,15 @@
             </a>
           </div>
           {% block inside_header %}{% endblock %}
+          {% if userToken and not tokenRaw %}
+          <form class="form right header-logout-form" action="/logout" method="post">
+              <input type="hidden" name="_csrf" value="{{ _csrf }}">
+              <input class="header-input" type="submit" name="logout" value="Logout">
+          </form>
+          <div class="clearfix"></div></div>
         </div>
+        {% endif %}
         {% block proposition_header %}{% endblock %}
-      </div>
     </header>
 
 

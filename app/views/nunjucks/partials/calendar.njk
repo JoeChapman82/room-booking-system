@@ -12,6 +12,7 @@
         {% endfor %}
     </dl>
     {% if now %}
-    <p class="now" style="{{ now | positionFromTop }}">now<span>now time</span></p>
+    <p class="now" style="top: {{ now | positionFromTop }};"><span>{{ now | hoursAndMinutes }}</span></p>
     {% endif %}
+
 </div>

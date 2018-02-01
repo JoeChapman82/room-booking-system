@@ -1,1 +1,39 @@
-{{ booking | dump }}
+{% if booking %}
+<table class="booking-details-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Room</td>
+            <td>{{ room.name }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{ booking.description }}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{ booking.name }}</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>{{ booking.start | asReadableDate }}</td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td>{{ booking.start | hoursAndMinutes }} - {{ booking.end | hoursAndMinutes }}</td>
+        </tr>
+    </tbody>
+</table>
+<form class="" action="/cancel" method="post">
+    <input type="hidden" name="bookedRoom" value="{{ booking._id }}">
+    <input class="button" type="submit" name="submit" value="Delete booking">
+</form>
+{% else %}
+    {{ typography.paragraph('Booking not found', 'lede') }}
+    {{ typography.link('Choose a room', '/choose', 'button') }}
+{% endif %}

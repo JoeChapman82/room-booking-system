@@ -1,0 +1,33 @@
+.previous-next-navigation {
+    list-style-type: none;
+    font-size: 1.5em;
+    margin-bottom: 2rem;
+}
+
+.previous-next-navigation a {
+    text-decoration: none;
+    outline: none;
+    color: #005ea5;
+}
+
+.date-nav-svg-right {
+    width: 2.2em;
+    height: 2.2em;
+    margin-left: -.5em;
+    vertical-align: middle;
+}
+
+.date-nav-svg-left {
+    width: 2.2em;
+    height: 2.2em;
+    margin-right: -.5em;
+    vertical-align: middle;
+}
+
+.previous {
+    float: left;
+}
+
+.next {
+    float: right;
+}

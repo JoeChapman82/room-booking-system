@@ -1,3 +1,5 @@
+const redirects = ('../controllers/redirects');
+
 module.exports = (err, req, res, next) => {
     console.log('---------------------------------------');
     console.log(err);
@@ -7,6 +9,6 @@ module.exports = (err, req, res, next) => {
             Stacktrace:<br \>
             ${err.stack}`);
     } else {
-        res.redirect('/');
+        redirects.goneWrong(req, res);
     }
 };

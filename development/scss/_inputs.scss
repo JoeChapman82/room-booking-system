@@ -1,0 +1,14 @@
+.header-input {
+    display: inline-block;
+    background-color: $black;
+    border: 0;
+    color: $white;
+    font-size: 120%;
+    font-weight: bold;
+    margin-top: 0;
+    // height: 100%;
+}
+
+.header-input:hover {
+    text-decoration: underline;
+}

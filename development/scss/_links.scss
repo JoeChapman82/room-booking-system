@@ -1,0 +1,40 @@
+.main-logo,
+.main-logo:visited,
+.main-logo:active  {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    border-bottom: 1px solid transparent;
+}
+
+a.homepage-link {
+    color: $black;
+}
+
+.homepage-link {
+    padding: .75rem 2rem;
+    background-color: $grey-3;
+    border: 1px solid $grey-1;
+    border-radius: 5px;
+    box-shadow: 2px 2px $black;
+    display: block;
+    margin-bottom: 1.25rem;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: $black;
+}
+
+.homepage-link:hover {
+    background-color: mix($govuk-blue, $grey-3, 80%);
+}
+
+@media screen and(max-width: 640px) {
+    .homepage-link {
+    width: 100%;
+    }
+}

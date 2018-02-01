@@ -3,6 +3,7 @@ const find = require('../../model/booking/read');
 const remove = require('../../model/booking/delete');
 const addDays = require('../../helpers/addDays');
 const addErrorMessage = require('../../helpers/addErrorMessage');
+const redirects = require('../../controllers/redirects');
 
 module.exports = {
     create: (req, res, next) => {
@@ -15,15 +16,36 @@ module.exports = {
             };
             create(booking)
             .then(response => {
+                res.locals.booking = response;
                 res.locals.bookings.push(response);
                 res.locals.bookedRoom = response._id;
                 res.locals.booked = true;
-                next();
+                return next();
             })
             .catch(error => {
                 addErrorMessage(res, 'booking', 'error booking room');
                 return next();
             });
+    },
+    superCreate: (req, res, next) => {
+        const booking = {
+            room: res.locals.roomId,
+            start: new Date(req.body.startDate),
+            end: new Date(req.body.endDate),
+            name: req.body.name,
+            description: req.body.description
+        };
+        create(booking)
+        .then((response) => {
+            res.locals.booking = response;
+            res.locals.bookedRoom = response._id;
+            res.locals.booked = true;
+            return next();
+        })
+        .catch((error) => {
+            addErrorMessage(res, 'booking', 'error booking room');
+            return next();
+        });
     },
     findById: (req, res, next) => {
         find.byId(req.params.id)
@@ -31,29 +53,52 @@ module.exports = {
             res.locals.booking = response;
             next();
         })
-        .catch(error => console.log(error.message));
+        .catch(error => redirects.goneWrong(req, res));
     },
     findDaysBookings: (req, res, next) => {
         const today = new Date(res.locals.today.date.getFullYear(), res.locals.today.date.getMonth(), res.locals.today.date.getDate());
         find.byDateRange(res.locals.room._id, today, addDays(today, 1))
         .then(response => {
             res.locals.bookings = response;
-            next();
+            return next();
         })
-        .catch(error => {
-            console.log(error.message);
-        });
+        .catch(error => redirects.goneWrong(req, res));
     },
     remove: (req, res, next) => {
-        console.log(req.body);
-        remove.byId(req.body.bookedRoom)
+        const toRemove = req.body.bookedRoom ? req.body.bookedRoom : req.params.id;
+        remove.byId(toRemove)
         .then(response => {
             res.locals.unbooked = true;
-            console.log(response);
             next();
         })
-        .catch(error => {
-            console.log(error.message);
-        });
+        .catch(error => redirects.goneWrong(req, res));
+    },
+    handleImport: (req, res, next) => {
+        let bookings = JSON.parse(res.locals.jsonBookings);
+        let writesMade = 0;
+        let writesToMake = bookings.length;
+        importBooking();
+        function importBooking() {
+            const booking = {
+                room: res.locals.room._id,
+                start: bookings[writesMade].start,
+                end: bookings[writesMade].end,
+                name: bookings[writesMade].description,
+                description: bookings[writesMade].description
+            };
+            create(booking)
+            .then((response) => {
+                writesMade++;
+                if(writesMade === writesToMake) {
+                    return next();
+                } else {
+                    importBooking();
+                }
+            })
+            .catch((error) => {
+                console.log(error.message);
+                return redirects.goneWrong(req, res);
+            });
+        }
     }
 };

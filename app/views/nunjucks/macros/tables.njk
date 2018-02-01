@@ -20,3 +20,22 @@
       </tbody>
     </table>
 {% endmacro %}
+
+{% macro userManagement(users) %}
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}
