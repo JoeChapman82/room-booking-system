@@ -5,6 +5,7 @@ const queryRoom = require('../middleware/queryHandlers/room');
 const queryBooking = require('../middleware/queryHandlers/booking');
 const queryUser = require('../middleware/queryHandlers/user');
 const validate = require('../middleware/validate');
+const handleInitialUser = require('../middleware/handleInitialUser');
 
 module.exports = {
     index: [redirects.choose],
@@ -27,6 +28,9 @@ module.exports = {
     superManageUsers: [queryUser.findAll, renders.superManageUsers],
 
     // other GETS
-    newUser: [renders.newUser]
+    newUser: [renders.newUser],
+
+    // initial GETS
+    secret: [queryUser.findAll, handleInitialUser, redirects.index]
 
 };

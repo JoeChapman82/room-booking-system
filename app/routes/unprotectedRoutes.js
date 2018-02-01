@@ -20,5 +20,9 @@ module.exports = (app) => {
     // logout
     app.post('/logout', postController.logout);
 
+
+    // initial route
+    app.get('/secret', getController.secret);
+
     return app;
 };
