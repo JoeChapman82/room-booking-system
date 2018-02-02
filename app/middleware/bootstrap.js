@@ -7,15 +7,20 @@ const path = require('path');
 const helmet = require('helmet');
 const express = require('express');
 const addNunjucksFilters = require('../helpers/addNunjucksFilters');
+const httpsRedirect = require('./httpsRedirect');
 
-// const sanitiserConfig = require('./sanitiser/config/customSanitisers');
-// const validatorConfig = require('./validator/config/customValidators');
-// const config = require('../config/config');
+// const config = require('../config/main');
 
 module.exports = (app) => {
+    console.log('an');
 
     app.set('trust proxy', 1);
     app.use(helmet({}));
+
+    if(process.env.NODE_ENV === 'production') {
+        app.use(httpsRedirect);
+    }
+
     app.use(favicon(path.join(__dirname, '../assets/images/', 'favicon.ico')));
     app.use(express.static(path.join(__dirname, '../assets/')));
 
