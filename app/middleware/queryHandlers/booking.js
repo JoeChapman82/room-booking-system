@@ -73,6 +73,15 @@ module.exports = {
         })
         .catch(error => redirects.goneWrong(req, res));
     },
+    clearHistoric: (req, res, next) => {
+        const yesterday = addDays(new Date(), -1);
+        remove.byHistoricDate(yesterday)
+        .then(response => {
+            res.locals.cleared = true;
+            next();
+        })
+        .catch(error => redirects.goneWrong(req, res));
+    },
     handleImport: (req, res, next) => {
         let bookings = JSON.parse(res.locals.jsonBookings);
         let writesMade = 0;

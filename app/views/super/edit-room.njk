@@ -4,26 +4,40 @@
 {% import "nunjucks/macros/messages.njk" as messages %}
 
 
-{% block page_title %}Create Room{% endblock %}
+{% block page_title %}Edit Room{% endblock %}
 
 {% block pre_content %}
 {{ typography.link ('Back home', '/super/home', 'link-back') }}
 {% if roomCreated %}
     {{ messages.roomCreationSuccess() }}
 {% endif %}
-    {{ typography.mainHeading ('Create new room') }}
+    {{ typography.mainHeading ('Edit room') }}
 {% endblock %}
 
 {% block content %}
 
     <div class="column-two-thirds">
-        {{ typography.paragraph('Simple form for quick creations of rooms.', 'lede additional-margin-heading') }}
-        <form class="" action="/super/create-room" method="post">
+        {{ typography.paragraph('Select a room to edit it', 'lede additional-margin-heading') }}
+        <div class="select-room-to-edit-wrapper">
+            {% for room in rooms %}
+            <button class="select-room-to-edit-button" type="button" name="button"
+                data-id="{{ room._id }}"
+                data-sitting="{{ room.sitting }}"
+                data-standing="{{ room.standing }}"
+                data-name="{{ room.name }}"
+                {% for item in room.equipment %}
+                data-equipment{{ loop.index }}="{{ item }}"
+                {% endfor %}
+            >{{ room.name }}</button>
+            {% endfor %}
+        </div>
+        <form class="" action="/super/edit-room" method="post">
             {{ forms.textInputSmall('name', 'Room name', '', errors.name, true) }}
             {{ forms.textInputSmall('equipment', 'Equipment 1', '', errors.equipment, true) }}
             {{ forms.textInputSmall('equipment', 'Equipment 2', '', errors.equipment, true) }}
             {{ forms.textInputSmall('sitting', 'Sitting capacity', '', errors.sitting, true) }}
             {{ forms.textInputSmall('standing', 'Standing capacity', '', errors.standing, true) }}
+            {{ forms.hiddenInput('roomId') }}
             {{ forms.hiddenInput('_csrf', _csrf) }}
             {{ forms.submitInput('Submit') }}
         </form>

@@ -16,11 +16,17 @@ module.exports = (app) => {
     app.get('/super/create-room', getController.superCreateRoom);
     app.post('/super/create-room', postController.superCreateRoom);
 
+    app.get('/super/edit-room', getController.superEditRoom);
+    app.post('/super/edit-room', postController.superEditRoom);
+
     app.get('/super/create-booking', getController.superCreateBooking);
     app.post('/super/create-booking', postController.superCreateBooking);
 
     app.get('/super/manage-users', getController.superManageUsers);
     // app.post('/super/manage-users', postController.superManageUsers);
+
+    app.get('/super/clear-old-bookings', getController.superClearOldBookings);
+    app.post('/super/clear-old-bookings', postController.superClearOldBookings);
 
     // other routes
     app.get('/new-user', getController.newUser);

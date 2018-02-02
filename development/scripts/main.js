@@ -1,3 +1,7 @@
+if (!NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
 function pad(n) {
     return (n < 10) ? ("0" + n) : n;
 }
@@ -54,5 +58,23 @@ document.querySelectorAll('.date-picker-input').forEach(function(input) {
 function reloadOnDateChange() {
     if(this.value !== this.dataset.original) {
         document.getElementById('changeDate').click();
+    }
+}
+
+document.querySelectorAll('.select-room-to-edit-button').forEach(function(button) {
+    button.addEventListener('click', updateEditableRoomFields);
+});
+
+function updateEditableRoomFields() {
+    document.getElementById('roomId').value = this.dataset.id;
+    document.getElementById('name').value = this.dataset.name;
+    document.getElementById('sitting').value = this.dataset.sitting;
+    document.getElementById('standing').value = this.dataset.standing;
+    var equipment = document.querySelectorAll('#equipment');
+    if(equipment[0]) {
+        equipment[0].value = this.dataset.equipment1 || '';
+    }
+    if(equipment[1]) {
+        equipment[1].value = this.dataset.equipment2 || '';
     }
 }

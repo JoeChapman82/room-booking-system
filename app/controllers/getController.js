@@ -24,8 +24,10 @@ module.exports = {
     superSeed: [renders.superSeed],
     superInviteUser: [renders.superInviteUser],
     superCreateRoom: [renders.superCreateRoom],
+    superEditRoom: [queryRoom.findAll, renders.superEditRoom],
     superCreateBooking: [renders.superCreateBooking],
     superManageUsers: [queryUser.findAll, renders.superManageUsers],
+    superClearOldBookings: [renders.superClearOldBookings],
 
     // other GETS
     newUser: [renders.newUser],

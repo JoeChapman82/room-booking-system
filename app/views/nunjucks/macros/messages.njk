@@ -28,16 +28,18 @@
 <div class="clearfix"></div></div>
 {% endmacro %}
 
-
+{% macro bookingsCleared() %}
+<div class="success-summary" role="group" tabindex="-1">
+    <h2 class="heading-small success-summary-heading no-margin-heading" id="successSummary">Bookings cleared</h2>
+    <p><strong class="strong">All historic bookings have been cleared</strong></p>
+</div>
+{% endmacro %}
 
 {% macro bookingCancelled() %}
-    <div class="success-summary" role="group" tabindex="-1">
-      <h2 class="heading-small success-summary-heading no-margin-heading" id="successSummary">
-        Booking cancelled
-      </h2>
-      <p><strong class="strong">Your booking has been removed</strong></p>
-
-    </div>
+<div class="success-summary" role="group" tabindex="-1">
+    <h2 class="heading-small success-summary-heading no-margin-heading" id="successSummary">Booking cancelled</h2>
+    <p><strong class="strong">Your booking has been removed</strong></p>
+</div>
 {% endmacro %}
 
 {% macro success(successes, heading, lede) %}

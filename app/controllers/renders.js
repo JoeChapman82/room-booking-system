@@ -14,8 +14,10 @@ module.exports = {
     superSeed: (req, res) => res.render('super/seed'),
     superInviteUser: (req, res) => res.render('super/invite-user'),
     superCreateRoom: (req, res) => res.render('super/create-room'),
+    superEditRoom: (req, res) => res.render('super/edit-room'),
     superCreateBooking: (req, res) => res.render('super/create-booking'),
     superManageUsers: (req, res) => res.render('super/manage-users'),
+    superClearOldBookings: (req, res) => res.render('super/clear-old-bookings'),
     // other renders
     newUser: (req, res) => res.render('user/new-user')
 };

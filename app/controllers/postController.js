@@ -25,8 +25,11 @@ module.exports = {
     // super user POSTS
     superCreateBooking: [queryRoom.findAll, validate.superCreateBooking, queryBooking.superCreate, renders.superCreateBooking],
     superCreateRoom: [validate.superCreateRoom, queryRoom.create, renders.superCreateRoom],
+    superEditRoom: [queryRoom.findAll, renders.superEditRoom],
     superInviteUser: [validate.superInviteUser, queryUser.findByEmail, assignToken.newUserToken, sendInviteEmail, renders.superInviteUser],
     superSeed: [handleUpload, csvConvert, queryRoom.findByName, queryBooking.handleImport, clearDataFile, renders.superSeed],
+    superClearOldBookings: [queryBooking.clearHistoric, renders.superClearOldBookings],
+    //logout
     logout: [clearCookies, redirects.index],
     // other POSTS
     newUser: [validate.newUser, renders.newUser]
