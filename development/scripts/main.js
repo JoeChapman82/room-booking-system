@@ -41,7 +41,6 @@ document.querySelectorAll('.time').forEach(function(time) {
         var toHours = lastSelectedDate[1] === '30' ? pad(parseInt(lastSelectedDate[0]) + 1).toString() : lastSelectedDate[0];
         inputs[2].value = toHours.length === 1 ? '0' + toHours : toHours;
         inputs[3].value = lastSelectedDate[1] === '30' ? '00' : '30';
-        console.log(inputs[0].value, inputs[1].value,inputs[2].value,inputs[3].value);
     });
     time.addEventListener('mouseover', function() {
         if(isClicking === true) {

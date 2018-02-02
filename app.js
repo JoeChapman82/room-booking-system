@@ -24,4 +24,4 @@ require(path.join(__dirname, '/app/routes/routes'))(app);
 app.all('*', (req, res) => res.redirect('/'));
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server listening on port: ${port}`));
+app.listen(port, () => console.log(`Server listening on port: ${port} in ${process.env.NODE_ENV} mode`));

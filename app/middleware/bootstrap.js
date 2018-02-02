@@ -6,7 +6,6 @@ const favicon = require('serve-favicon');
 const path = require('path');
 const helmet = require('helmet');
 const express = require('express');
-
 const addNunjucksFilters = require('../helpers/addNunjucksFilters');
 
 // const sanitiserConfig = require('./sanitiser/config/customSanitisers');
@@ -31,7 +30,6 @@ module.exports = (app) => {
     });
 
     addNunjucksFilters(nunjucksEnv);
-
 
     app.use(cookieParser(process.env.COOKIE_SECRET || 'oops, forgot the var'));
 

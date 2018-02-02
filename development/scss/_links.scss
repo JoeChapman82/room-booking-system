@@ -14,6 +14,17 @@ a.homepage-link {
     color: $black;
 }
 
+.digital-link,
+.digital-link:active,
+.digital-link:visited,
+.digital-link:link {
+    color: $white;
+}
+
+.digital-link:hover {
+    text-decoration: underline;
+}
+
 .homepage-link {
     padding: .75rem 2rem;
     background-color: $grey-3;
