@@ -12,7 +12,6 @@ const httpsRedirect = require('./httpsRedirect');
 // const config = require('../config/main');
 
 module.exports = (app) => {
-    console.log('an');
 
     app.set('trust proxy', 1);
     app.use(helmet({}));
