@@ -12,9 +12,11 @@ module.exports = {
     login: validation.login,
     changeDate: validation.changeDate,
     requestBooking: validation.requestBooking,
+    adminCreateRoom: validation.adminCreateRoom,
+    adminEditRoom: validation.adminEditRoom,
     superCreateBooking: validation.superCreateBooking,
     superCreateRoom: validation.superCreateRoom,
-    adminCreateRoom: validation.adminCreateRoom,
+    superEditRoom: validation.superEditRoom,
     superInviteUser: validation.superInviteUser,
     newUser: validation.newUser
 };

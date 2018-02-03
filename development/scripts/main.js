@@ -83,6 +83,7 @@ document.querySelectorAll('select').forEach(function(select) {
 });
 
 function revealHiddenOptions() {
+    console.log('ran');
     for(var i = 0; i < this.options.length; i++) {
         if(this.options[i].dataset.target) {
             var el = document.getElementById(this.options[i].dataset.target);

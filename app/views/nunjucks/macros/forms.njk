@@ -63,7 +63,7 @@
 </div>
 {% endmacro %}
 
-{% macro selectInput(id, label, values, error, related, hintText, size, hasTarget) %}
+{% macro selectInput(id, label, values, error, selectedOption, related, hintText, size, hasTarget) %}
 <div class="form-group{% if related %}-related{% endif %} {% if error %}form-group-error{% endif %}">
 <label class="form-label-bold" for="{{ id }}">{{ label }}</label>
 {% if hintText %}
@@ -78,9 +78,9 @@
     <option value="" disabled selected>Select an option</option>
     {% for item in values %}
         {% if item.value %}
-        <option value="{{ item.value }}" {% if item.target %} data-target="{{ item.target }}"{% endif %}>{{ item.label }}</option>
+        <option value="{{ item.value }}" {% if item.value == selectedOption %} selected{% endif %} {% if item.target %} data-target="{{ item.target }}"{% endif %}>{{ item.label }}</option>
         {% elif item._id %}
-            <option value="{{ item._id }}" {% if hasTarget %} data-target="{{ item._id }}"{% endif %}>{{ item.name }}</option>
+            <option value="{{ item._id }}" {% if item._id == selectedOption %} selected{% endif %}{% if hasTarget %} data-target="{{ item._id }}"{% endif %}>{{ item.name }}</option>
         {% endif %}
     {% endfor %}
 </select>
@@ -95,14 +95,14 @@
     <input id="{{ id }}" name="{{ id }}" type="hidden" name="submit" value="{{ value }}">
 {% endmacro %}
 
-{% macro roomForm(postUrl, _csrf, errors, room, isHidden) %}
-    <form class="{% if isHidden %}js-hidden{% endif %}" action="{{ postUrl }}" method="post" id="{{ room._id }}">
+{% macro roomForm(postUrl, _csrf, errors, room, isHidden, visible) %}
+    <form class="{% if isHidden and visible != room._id %}js-hidden{% endif %}" action="{{ postUrl }}" method="post" id="{{ room._id }}">
         {{ textInputSmall('name', 'Room name', room.name, errors.name, true) }}
         {{ textInputSmall('equipment', 'Equipment 1', room.equipment[0], errors.equipment, true) }}
         {{ textInputSmall('equipment', 'Equipment 2', room.equipment[1], errors.equipment, true) }}
         {{ textInputSmall('sitting', 'Sitting capacity', room.sitting, errors.sitting, true) }}
         {{ textInputSmall('standing', 'Standing capacity', room.standing, errors.standing, true) }}
-        {{ hiddenInput(room._id) }}
+        {{ hiddenInput('id', room._id) }}
         {{ hiddenInput('_csrf', _csrf) }}
         {{ submitInput('Submit') }}
     </form>
