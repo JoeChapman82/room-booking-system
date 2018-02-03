@@ -1,4 +1,5 @@
 const addDays = require('../helpers/addDays');
+const isDateBeforeToday = require('../helpers/isDateBeforeToday');
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 module.exports = (req, res, next) => {
@@ -40,7 +41,3 @@ module.exports = (req, res, next) => {
      }
     next();
 };
-
-function isDateBeforeToday(date) {
-    return new Date(date.toDateString()) < new Date(new Date().toDateString());
-}
