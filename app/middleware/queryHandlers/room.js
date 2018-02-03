@@ -1,6 +1,7 @@
 const find = require('../../model/room/read');
 const create = require('../../model/room/create');
 const update = require('../../model/room/update');
+const redirects = require('../../controllers/redirects');
 const addErrorMessage = require('../../helpers/addErrorMessage');
 
 
@@ -18,20 +19,19 @@ module.exports = {
         find.byName(toQuery)
         .then(response => {
             res.locals.room = response;
+            res.locals.searchCriteria = response === null ? 'none' : response._id;
             next();
         })
-        .catch(error => console.log(error.message));
+        .catch(error => redirects.goneWrong(req, res));
     },
     findById: (req, res, next) => {
         let toQuery = res.locals.booking ? res.locals.booking.room : req.params.id;
-        console.log(toQuery);
         find.byId(toQuery)
         .then(response => {
-            console.log(response);
             res.locals.room = response;
             next();
         })
-        .catch(error => console.log(error.message));
+        .catch(error => redirects.goneWrong(req, res));
     },
     create: (req, res, next) => {
         if(res.locals.room !== null) {

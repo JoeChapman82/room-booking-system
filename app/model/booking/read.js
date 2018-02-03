@@ -7,6 +7,15 @@ module.exports = {
     byDateRange: (id, start, end) => {
         return Booking.find({room: id, start: {$gte: start}, end: {$lte: end}});
     },
+    byRoom: (roomId) => Booking.find({room: roomId}).limit(50).populate({path: 'room', select: 'name'}),
+    // byRoom: (roomName) => {
+    //     return Booking.find({})
+    //     .populate({
+    //         path: 'room',
+    //         match: {name: '201'},
+    //         options: {limit: 50}
+    //     });
+    // }
 };
 
 // .populate({

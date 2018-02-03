@@ -21,6 +21,7 @@ module.exports = (app) => {
     app.post('/admin/invite-user', postController.adminInviteUser);
 
     app.post('/admin/search-by-description', postController.adminSearchByDescription);
+    app.post('/admin/search-by-room', postController.adminSearchByRoomName);
 
     app.get('/admin/search-results', getController.adminSearchResults);
     app.get('/admin/no-results', getController.adminNoResults);
