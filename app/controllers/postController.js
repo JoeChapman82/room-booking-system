@@ -22,9 +22,13 @@ module.exports = {
     bookCancel: [queryBooking.remove, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.bookCancel],
     cancel: [queryBooking.remove, redirects.cancelled],
     login: [validate.login, queryUser.findToAuthenticate, passwordManager.comparePassword, assignToken.sessionToken, findHome],
+
+    // admin POSTS
+    adminCreateRoom: [validate.adminCreateRoom, queryRoom.findByName, queryRoom.create, renders.superCreateRoom],
+
     // super user POSTS
     superCreateBooking: [queryRoom.findAll, validate.superCreateBooking, queryBooking.superCreate, renders.superCreateBooking],
-    superCreateRoom: [validate.superCreateRoom, queryRoom.create, renders.superCreateRoom],
+    superCreateRoom: [validate.superCreateRoom, queryRoom.findByName, queryRoom.create, renders.superCreateRoom],
     superEditRoom: [queryRoom.findAll, renders.superEditRoom],
     superInviteUser: [validate.superInviteUser, queryUser.findByEmail, assignToken.newUserToken, sendInviteEmail, renders.superInviteUser],
     superSeed: [handleUpload, csvConvert, queryRoom.findByName, queryBooking.handleImport, clearDataFile, renders.superSeed],
@@ -32,5 +36,5 @@ module.exports = {
     //logout
     logout: [clearCookies, redirects.index],
     // other POSTS
-    newUser: [validate.newUser, renders.newUser]
+    newUser: [validate.newUser, queryUser.findByEmail, passwordManager.hashPassword, queryUser.create, renders.newUser]
 };

@@ -11,7 +11,6 @@ module.exports = (req, res, next) => {
             return redirects.goneWrong(req, res);
         });
     } else {
-        console.log('found users');
         return next();
     }
 };

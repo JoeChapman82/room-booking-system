@@ -6,3 +6,11 @@
 .right {
     float: right;
 }
+
+.gutter-padding-right {
+    padding-right: $gutter;
+}
+
+@media screen and(max-width: 640px) {
+    padding-right: $gutter / 2;
+}

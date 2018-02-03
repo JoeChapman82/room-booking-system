@@ -13,7 +13,7 @@
     {% if booked %}
         {{ messages.bookingSuccess('/book-cancel/' + room._id, bookedRoom) }}
     {% elif unbooked %}
-        {{ messages.bookingCancelled() }}
+        {{ messages.successMessage('Booking cancelled', 'Your booking has been removed') }}
     {% endif %}
 {% endblock %}
 

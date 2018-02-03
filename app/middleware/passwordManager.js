@@ -11,16 +11,13 @@ module.exports = {
             return next();
         })
         .catch((error) => {
-            console.log(error);
             return redirects.goneWrong(req, res);
         });
     },
     comparePassword: (req, res, next) => {
-        console.log(req.body.password, res.locals.user.password);
         bcrypt.compare(req.body.password, res.locals.user.password)
         .then((response) => {
             if(response) {
-                console.log('success');
                 return next();
             } else {
                 res.locals.errors = {
@@ -31,7 +28,6 @@ module.exports = {
             }
         })
         .catch((error) => {
-            console.log(error);
             return redirects.goneWrong(req, res);
         });
     }

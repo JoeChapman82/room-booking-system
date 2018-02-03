@@ -70,3 +70,30 @@
 {% macro hiddenInput(id, value) %}
     <input id="{{ id }}" name="{{ id }}" type="hidden" name="submit" value="{{ value }}">
 {% endmacro %}
+
+{% macro searchBox(id, label, value, error, hintText, submitValue, postUrl) %}
+    <div class="column-half">
+        <form action="{{ postUrl }}" method="post">
+            <div class="search-box-wrapper">
+                <div class="form-group{% if error %} form-group-error{% endif %}">
+                    <label class="form-label-bold block-label" for="{{ id }}">{{ label }}
+                        {% if hintText %}
+                            <span class="form-hint">{{ hintText }}</span>
+                        {% endif %}
+                        {% if error %}
+                            <span class="error-message">{{ error.msg }}</span>
+                        {% endif %}
+                        <div class="search-box-input-wrapper">
+                            <input id="{{ id }}" class="form-control form-control-full search-box-input {% if error %}form-control-error{% endif %} block-input" type="text" name="{{ id }}" value="{{ value }}">
+                            <button class="search-box-svg-button" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            </button>
+                        </div>
+
+                    </label>
+                </div>
+                <input class="button search-submit" type="submit" name="submit" value="{{ submitValue }}">
+            </div>
+        </form>
+    </div>
+{% endmacro %}

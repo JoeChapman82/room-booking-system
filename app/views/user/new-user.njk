@@ -7,6 +7,10 @@
 {% block page_title %}Login{% endblock %}
 
 {% block pre_content %}
+    {{ typography.link ('Choose a room', '/choose', 'link-back') }}
+    {% if userCreated %}
+        {{ messages.successMessage('You\'ve created your account', 'You can now login', false, 'Login', '/login') }}
+    {% endif %}
     {{ typography.mainHeading ('Create account') }}
     {{ typography.paragraph('Check your email is correct and choose a password that you will remember. If your email is not correct, you will need a new invite.', 'lede additional-margin-heading')}}
 {% endblock %}

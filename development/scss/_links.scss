@@ -44,8 +44,70 @@ a.homepage-link {
     background-color: mix($govuk-blue, $grey-3, 80%);
 }
 
+.admin-home-option {
+    width: 100%;
+    border: 2px solid $grey-1;
+    height: 0;
+    padding-top: 5%;
+    padding-bottom: 75%;
+    margin: .5rem;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 120%;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px $black;
+    background-color: mix($grey-3, $grey-4, 80%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35%;
+}
+
+.admin-home-option:focus {
+    background-color: mix($grey-3, $grey-4, 80%);
+    border: 0;
+}
+
+a.admin-home-option {
+    color: $black;
+}
+
+.create-option {
+    background-image: url('/images/box.svg');
+}
+
+.edit-option {
+    background-image: url('/images/edit.svg');
+}
+
+.new-user-option {
+    background-image: url('/images/user.svg');
+}
+
+.admin-user-view-link {
+    margin: 0 .5rem;
+}
+
+.admin-user-view-link:visited {
+    color: $link-colour;
+}
+
+@media screen and(max-width: 750px) {
+    .admin-home-option {
+        font-size: 100%;
+    }
+}
+
 @media screen and(max-width: 640px) {
     .homepage-link {
-    width: 100%;
+        width: 100%;
+    }
+
+    .admin-home-option {
+        padding-bottom: 20%;
+        padding-top: 2%;
+        background-size: 15%;
+        background-position: 50% 90%;
     }
 }

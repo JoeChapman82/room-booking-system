@@ -18,6 +18,7 @@ module.exports = {
 
     // admin GETS
     adminHome: [renders.adminHome],
+    adminCreateRoom: [renders.adminCreateRoom],
 
     // super GETS
     superHome: [renders.superHome],

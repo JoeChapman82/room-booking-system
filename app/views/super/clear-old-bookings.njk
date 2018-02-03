@@ -9,7 +9,7 @@
 {% block pre_content %}
 {{ typography.link ('Back home', '/super/home', 'link-back') }}
     {% if cleared %}
-    {{ messages.bookingsCleared() }}
+    {{ messages.successMessage('Bookings cleared', 'All historic bookings have been cleared') }}
     {% endif %}
     {{ typography.mainHeading ('Clear bookings') }}
 {% endblock %}

@@ -41,6 +41,30 @@
     margin-bottom: 2rem;
 }
 
+.search-box-wrapper,
+.admin-home-wrapper {
+    border: 2px solid $grey-1;
+    padding: 1.5rem 1.5rem 3rem;
+    border-radius: 5px;
+    background-color: $grey-4;
+    margin-bottom: $gutter;
+}
+
+.admin-home-options-wrapper {
+    text-align: center;
+    margin-bottom: $gutter;
+    height: auto;
+}
+
+.search-box-input-wrapper {
+    position: relative;
+}
+
+.search-box-input-wrapper svg {
+    height: 120%;
+    stroke: $white;
+}
+
 @media screen and(max-width: 950px) {
     .file-upload-wrapper {
         width: 75%;

@@ -13,7 +13,8 @@ module.exports = {
         .catch(error => console.log(error.message));
     },
     findByName: (req, res, next) => {
-        find.byName(res.locals.roomName)
+        let toQuery = req.body.roomName ? req.body.roomName : res.locals.roomName;
+        find.byName(toQuery)
         .then(response => {
             res.locals.room = response;
             next();
@@ -30,6 +31,10 @@ module.exports = {
         .catch(error => console.log(error.message));
     },
     create: (req, res, next) => {
+        if(res.locals.room !== null) {
+            res.locals.errors = {newRoom: {msg: 'don\'t create duplicate rooms'}};
+            return next();
+        }
         const room = {
             name: req.body.name,
             equipment: req.body.equipment,

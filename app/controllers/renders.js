@@ -9,6 +9,7 @@ module.exports = {
     goneWrong: (req, res) => res.render('errors/somethings-gone-wrong'),
     // admin renders
     adminHome: (req, res) => res.render('admin/home'),
+    adminCreateRoom: (req, res) => res.render('admin/create-room'),
     // super renders
     superHome: (req, res) => res.render('super/home'),
     superSeed: (req, res) => res.render('super/seed'),

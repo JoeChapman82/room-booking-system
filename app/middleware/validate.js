@@ -133,6 +133,23 @@ module.exports = {
             return renders.superCreateRoom(req, res);
         }
     },
+    adminCreateRoom: (req, res, next) => {
+        req.body.equipment = Array.isArray(req.body.equipment) ? req.body.equipment : [req.body.equipment];
+        if(validator.isEmpty(req.body.name)) {
+            addErrorMessage(res, 'name', 'provide a room name');
+        }
+        if(validator.isEmpty(req.body.sitting)) {
+            addErrorMessage(res, 'sitting', 'provide sitting capacity');
+        }
+        if(validator.isEmpty(req.body.standing)) {
+            addErrorMessage(res, 'standing', 'provide standing capacity');
+        }
+        if(!res.locals.errors) {
+            return next();
+        } else {
+            return renders.adminCreateRoom(req, res);
+        }
+    },
     superInviteUser: (req, res, next) => {
         if(validator.isEmpty(req.body.email) || !validator.isEmail(req.body.email)) {
             addErrorMessage(res, 'email', 'provide a valid email');

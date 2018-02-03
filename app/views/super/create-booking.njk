@@ -11,7 +11,7 @@
 {% if booked %}
     {{ messages.bookingSuccess('/super/create-booking', bookedRoom) }}
 {% elif unbooked %}
-    {{ messages.bookingCancelled() }}
+    {{ messages.successMessage('Booking cancelled', 'Your booking has been removed') }}
 {% endif %}
     {{ typography.mainHeading ('Create booking') }}
 {% endblock %}

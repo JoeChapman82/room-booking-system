@@ -30,7 +30,6 @@ module.exports = (req, res, next) => {
 
     upload(req, res, (err) => {
         if(err) {
-            console.log(err);
             res.locals.errors = {uploadFile: {msg: 'error uploading'}};
             return renders.superSeed(req, res);
         } else {

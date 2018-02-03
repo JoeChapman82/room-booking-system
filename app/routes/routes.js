@@ -4,6 +4,9 @@ const postController = require('../controllers/postController');
 module.exports = (app) => {
     // admin routes
     app.get('/admin/home', getController.adminHome);
+
+    app.get('/admin/create-room', getController.adminCreateRoom);
+    app.post('/admin/create-room', postController.adminCreateRoom);
     // super routes
     app.get('/super/home', getController.superHome);
 

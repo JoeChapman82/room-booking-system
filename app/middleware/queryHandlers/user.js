@@ -58,8 +58,13 @@ module.exports = {
         });
     },
     create: (req, res, next) => {
+        if(res.locals.user !== null) {
+            res.locals.errors = {email: {msg: 'don\'t create duplicate accounts'}};
+            return next();
+        }
         create(req.body.email, res.locals.hash, 'Admin')
         .then((response) => {
+            res.locals.userCreated = true;
             console.log(response);
             return next();
         })
