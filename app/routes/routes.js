@@ -7,6 +7,9 @@ module.exports = (app) => {
 
     app.get('/admin/create-room', getController.adminCreateRoom);
     app.post('/admin/create-room', postController.adminCreateRoom);
+
+    app.get('/admin/edit-room', getController.adminEditRoom);
+    app.post('/admin/edit-room', postController.adminEditRoom);
     // super routes
     app.get('/super/home', getController.superHome);
 

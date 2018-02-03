@@ -77,3 +77,21 @@ function updateEditableRoomFields() {
         equipment[1].value = this.dataset.equipment2 || '';
     }
 }
+
+document.querySelectorAll('select').forEach(function(select) {
+    select.addEventListener('change', revealHiddenOptions);
+});
+
+function revealHiddenOptions() {
+    for(var i = 0; i < this.options.length; i++) {
+        if(this.options[i].dataset.target) {
+            var el = document.getElementById(this.options[i].dataset.target);
+            if(!el.classList.contains('js-hidden')) {
+                el.classList.add('js-hidden');
+            }
+        }
+    }
+    if(document.getElementById(this.options[this.selectedIndex].dataset.target)) {
+        document.getElementById(this.options[this.selectedIndex].dataset.target).classList.remove('js-hidden');
+    }
+}

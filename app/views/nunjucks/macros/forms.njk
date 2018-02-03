@@ -25,7 +25,7 @@
         {% if error %}
             <span class="error-message">{{ error.msg }}</span>
         {% endif %}
-        <input id="{{ id }}" class="form-control {% if error %}form-control-error{% endif %} block-input" type="text" name="{{ id }}" value="{{ value }}" {% if readonly %}readonly{% endif %}>
+        <input id="{{ id }}" class="form-control{% if error %} form-control-error{% endif %} block-input" type="text" name="{{ id }}" value="{{ value }}" {% if readonly %}readonly{% endif %}>
     </label>
 </div>
 {% endmacro %}
@@ -63,6 +63,30 @@
 </div>
 {% endmacro %}
 
+{% macro selectInput(id, label, values, error, related, hintText, size, hasTarget) %}
+<div class="form-group{% if related %}-related{% endif %} {% if error %}form-group-error{% endif %}">
+<label class="form-label-bold" for="{{ id }}">{{ label }}</label>
+{% if hintText %}
+    <span class="form-hint">
+        {{ hintText }}
+    </span>
+{% endif %}
+{% if error %}
+    <span class="error-message">{{ error.msg }}</span>
+{% endif %}
+<select id="{{ id }}" class="form-control {% if error %} form-control-error{% endif %} {% if size %}form-control-{{ size }}{% endif %}" name="{{ id }}" {% if readonly %}disabled{% endif %}>
+    <option value="" disabled selected>Select an option</option>
+    {% for item in values %}
+        {% if item.value %}
+        <option value="{{ item.value }}" {% if item.target %} data-target="{{ item.target }}"{% endif %}>{{ item.label }}</option>
+        {% elif item._id %}
+            <option value="{{ item._id }}" {% if hasTarget %} data-target="{{ item._id }}"{% endif %}>{{ item.name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+</div>
+{% endmacro %}
+
 {% macro submitInput(value, type, name) %}
 <input {% if name %}id="{{ name }}" name="{{ name }}"{% endif %}class="button {% if type %}{{ type }}{% endif %}" type="submit" name="submit" value="{{ value }}">
 {% endmacro %}
@@ -70,6 +94,20 @@
 {% macro hiddenInput(id, value) %}
     <input id="{{ id }}" name="{{ id }}" type="hidden" name="submit" value="{{ value }}">
 {% endmacro %}
+
+{% macro roomForm(postUrl, _csrf, errors, room, isHidden) %}
+    <form class="{% if isHidden %}js-hidden{% endif %}" action="{{ postUrl }}" method="post" id="{{ room._id }}">
+        {{ textInputSmall('name', 'Room name', room.name, errors.name, true) }}
+        {{ textInputSmall('equipment', 'Equipment 1', room.equipment[0], errors.equipment, true) }}
+        {{ textInputSmall('equipment', 'Equipment 2', room.equipment[1], errors.equipment, true) }}
+        {{ textInputSmall('sitting', 'Sitting capacity', room.sitting, errors.sitting, true) }}
+        {{ textInputSmall('standing', 'Standing capacity', room.standing, errors.standing, true) }}
+        {{ hiddenInput(room._id) }}
+        {{ hiddenInput('_csrf', _csrf) }}
+        {{ submitInput('Submit') }}
+    </form>
+{% endmacro %}
+
 
 {% macro searchBox(id, label, value, error, hintText, submitValue, postUrl) %}
     <div class="column-half">

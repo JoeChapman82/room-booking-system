@@ -3,13 +3,12 @@
 {% import "nunjucks/macros/forms.njk" as forms %}
 {% import "nunjucks/macros/messages.njk" as messages %}
 
-
 {% block page_title %}Edit Room{% endblock %}
 
 {% block pre_content %}
-{{ typography.link ('Back home', '/super/home', 'link-back') }}
+{{ typography.link ('Back home', '/admin/home', 'link-back') }}
 {% if roomCreated %}
-    {{ messages.roomCreationSuccess() }}
+    {{ messages.roomEditSuccess() }}
 {% endif %}
     {{ typography.mainHeading ('Edit room') }}
 {% endblock %}
@@ -20,7 +19,7 @@
         {{ typography.paragraph('Select a room from the box below to edit the rooms details.', 'lede additional-margin-heading') }}
         {{ forms.selectInput('roomSelect', 'Select a room', rooms, errors.roomSelect, false, false, false, true) }}
         {% for room in rooms %}
-        {{ forms.roomForm('/super/edit-room', _csrf, errors, room, true) }}
+        {{ forms.roomForm('/admin/edit-room', _csrf, errors, room, true) }}
         {% endfor %}
     </div>
 

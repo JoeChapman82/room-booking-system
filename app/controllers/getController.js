@@ -19,6 +19,7 @@ module.exports = {
     // admin GETS
     adminHome: [renders.adminHome],
     adminCreateRoom: [renders.adminCreateRoom],
+    adminEditRoom: [queryRoom.findAll, renders.adminEditRoom],
 
     // super GETS
     superHome: [renders.superHome],

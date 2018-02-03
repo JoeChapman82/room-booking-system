@@ -10,6 +10,7 @@ module.exports = {
     // admin renders
     adminHome: (req, res) => res.render('admin/home'),
     adminCreateRoom: (req, res) => res.render('admin/create-room'),
+    adminEditRoom: (req, res) => res.render('admin/edit-room'),
     // super renders
     superHome: (req, res) => res.render('super/home'),
     superSeed: (req, res) => res.render('super/seed'),

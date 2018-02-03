@@ -4,7 +4,7 @@
 {% import "nunjucks/macros/messages.njk" as messages %}
 
 
-{% block page_title %}Create Room{% endblock %} 
+{% block page_title %}Create Room{% endblock %}
 
 {% block pre_content %}
 {{ typography.link ('Back home', '/admin/home', 'link-back') }}
@@ -18,15 +18,7 @@
 
     <div class="column-two-thirds">
         {{ typography.paragraph('Simple form for quick creations of rooms.', 'lede additional-margin-heading') }}
-        <form class="" action="/admin/create-room" method="post">
-            {{ forms.textInputSmall('name', 'Room name', '', errors.name, true) }}
-            {{ forms.textInputSmall('equipment', 'Equipment 1', '', errors.equipment, true) }}
-            {{ forms.textInputSmall('equipment', 'Equipment 2', '', errors.equipment, true) }}
-            {{ forms.textInputSmall('sitting', 'Sitting capacity', '', errors.sitting, true) }}
-            {{ forms.textInputSmall('standing', 'Standing capacity', '', errors.standing, true) }}
-            {{ forms.hiddenInput('_csrf', _csrf) }}
-            {{ forms.submitInput('Submit') }}
-        </form>
+        {{ forms.roomForm('/admin/create-room', _csrf, errors) }}
     </div>
 
 {% endblock %}

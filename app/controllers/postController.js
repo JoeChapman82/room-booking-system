@@ -25,6 +25,7 @@ module.exports = {
 
     // admin POSTS
     adminCreateRoom: [validate.adminCreateRoom, queryRoom.findByName, queryRoom.create, renders.adminCreateRoom],
+    adminEditRoom: [queryRoom.findAll, renders.adminEditRoom],
 
     // super user POSTS
     superCreateBooking: [queryRoom.findAll, validate.superCreateBooking, queryBooking.superCreate, renders.superCreateBooking],
