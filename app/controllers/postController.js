@@ -24,7 +24,7 @@ module.exports = {
     login: [validate.login, queryUser.findToAuthenticate, passwordManager.comparePassword, assignToken.sessionToken, findHome],
 
     // admin POSTS
-    adminCreateRoom: [validate.adminCreateRoom, queryRoom.findByName, queryRoom.create, renders.superCreateRoom],
+    adminCreateRoom: [validate.adminCreateRoom, queryRoom.findByName, queryRoom.create, renders.adminCreateRoom],
 
     // super user POSTS
     superCreateBooking: [queryRoom.findAll, validate.superCreateBooking, queryBooking.superCreate, renders.superCreateBooking],
