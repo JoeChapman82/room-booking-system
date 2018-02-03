@@ -2,11 +2,11 @@ const notify = require('../services/notify/notify');
 const mainConfig = require('../config/main');
 
 module.exports = (req, res, next) => {
+    if(res.locals.user !== null) {
+        res.locals.errors = {email: {msg: 'User already has an account'}};
+        return next();
+    }
     return next();
-    // if(res.locals.user !== null) {
-    //     res.locals.errors = {email: {msg: 'User already has an account'}};
-    //     return next();
-    // }
     // let param = encodeURIComponent(res.locals.newUserToken);
     // let link = `${process.env.NODE_URI}/new-user?token=${param}`;
     // const personalisation = {

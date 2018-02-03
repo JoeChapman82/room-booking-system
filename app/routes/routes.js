@@ -10,6 +10,15 @@ module.exports = (app) => {
 
     app.get('/admin/edit-room', getController.adminEditRoom);
     app.post('/admin/edit-room', postController.adminEditRoom);
+
+    app.get('/admin/invite-user', getController.adminInviteUser);
+    app.post('/admin/invite-user', postController.adminInviteUser);
+
+    app.post('/admin/search-by-description', postController.adminSearchByDescription);
+
+    app.get('/admin/search-results', getController.adminSearchResults);
+    app.get('/admin/no-results', getController.adminNoResults);
+
     // super routes
     app.get('/super/home', getController.superHome);
 

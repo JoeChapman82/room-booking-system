@@ -14,6 +14,8 @@ module.exports = {
     requestBooking: validation.requestBooking,
     adminCreateRoom: validation.adminCreateRoom,
     adminEditRoom: validation.adminEditRoom,
+    adminInviteUser: validation.adminInviteUser,
+    adminSearchByDescription: validation.adminSearchByDescription,
     superCreateBooking: validation.superCreateBooking,
     superCreateRoom: validation.superCreateRoom,
     superEditRoom: validation.superEditRoom,

@@ -9,6 +9,8 @@ module.exports = {
     goneWrong: (req, res) => res.redirect('/errors/somethings-gone-wrong'),
     // admin redirects
     adminHome: (req, res) => res.redirect('/admin/home'),
+    adminSearchResults: (req, res) => res.redirect(`/admin/search-results?search=${res.locals.searchCriteria}`),
+    adminNoResults: (req, res) => res.redirect('/admin/no-results'),
     // super redirects
     superHome: (req, res) => res.redirect('/super/home')
 
