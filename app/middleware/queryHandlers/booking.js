@@ -10,4 +10,5 @@ module.exports = {
     remove: booking.remove,
     clearHistoric: booking.clearHistoric,
     handleImport: booking.handleImport,
+    updateOne: booking.updateOne
 };

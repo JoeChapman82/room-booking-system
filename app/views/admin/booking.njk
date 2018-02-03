@@ -9,13 +9,16 @@
 
 {% block pre_content %}
     {{ typography.link ('Back home', '/admin/home', 'link-back') }}
+    {% if bookingEdited %}
+        {{ messages.successMessage('Booking updated', 'The booking has been updated with the details you provided')}}
+    {% endif %}
     {{ typography.mainHeading ('Booking details') }}
 {% endblock %}
 
 {% block content %}
 
     <div class="column-two-thirds">
-        {{ forms.bookingForm('/admin/edit-booking', '/admin/cancel-booking', _csrf, errors, booking, room) }}
+        {{ forms.bookingForm('/admin/booking', '/admin/cancel-booking', _csrf, errors, booking, room) }}
     </div>
 
 {% endblock %}

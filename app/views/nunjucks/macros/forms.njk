@@ -109,15 +109,14 @@
 {% endmacro %}
 
 {% macro bookingForm(postUrl, href, _csrf, errors, booking, room) %}
-    <form action="{{ postUrl }}" method="post">
+    <form action="{{ postUrl }}/{{ booking._id }}" method="post">
         {{ textInput('name', 'Name', booking.name, errors.name, true) }}
         {{ textInput('description', 'Description', booking.description, errors.description, true) }}
         {{ textInputSmall('room', 'Room', room.name, errors.room, true) }}
         {{ textInputSmall('date', 'Date', booking.start | asDateString, errors.date, true) }}
         {{ textInputSmall('startTime', 'Start time', booking.start | hoursAndMinutes, errors.startTime, true) }}
         {{ textInputSmall('endTime', 'End time', booking.end | hoursAndMinutes, errors.endTime, true) }}
-        {{ hiddenInput('id', room._id) }}
-        {{ hiddenInput('bookingId', booking._id) }}
+        {{ hiddenInput('id', booking._id) }}
         {{ hiddenInput('_csrf', _csrf) }}
         {{ submitInput('Update Booking') }}
         <a href="{{ href }}/{{ booking._id }}" class="button">Delete Booking</a>
