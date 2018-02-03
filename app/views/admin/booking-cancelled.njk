@@ -5,16 +5,14 @@
 {% import "nunjucks/macros/messages.njk" as messages %}
 
 
-{% block page_title %}Cancel{% endblock %}
+{% block page_title %}Booking details{% endblock %}
 
 {% block pre_content %}
-    {{ typography.mainHeading ('Booking details') }}
+    <a href="/admin/home" class="link-back">Back home</a>
+    <div class="govuk-box-highlight text">
+        {{ typography.heading ('Booking deleted', '1', 'heading-xlarge no-either-margin-heading' ) }}
+    </div>
 {% endblock %}
 
 {% block content %}
-
-    <div class="column-two-thirds">
-        {{ tables.bookingDetails(booking, room, '/cancel') }}
-    </div>
-
 {% endblock %}

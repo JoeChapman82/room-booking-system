@@ -24,8 +24,10 @@ module.exports = {
     },
     findById: (req, res, next) => {
         let toQuery = res.locals.booking ? res.locals.booking.room : req.params.id;
+        console.log(toQuery);
         find.byId(toQuery)
         .then(response => {
+            console.log(response);
             res.locals.room = response;
             next();
         })

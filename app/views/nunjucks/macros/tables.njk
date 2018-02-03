@@ -39,3 +39,72 @@
         </tbody>
     </table>
 {% endmacro %}
+
+{% macro searchResults(results, href) %}
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Room</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td><a href="{{ href }}/{{ result._id }}">{{ result.name }}</a></td>
+                <td>{{ result.description }}</td>
+                <td>{{ result.room.name }}</td>
+                <td>{{ result.start | asReadableDate }}</td>
+                <td>{{ result.start | hoursAndMinutes }} - {{ result.end | hoursAndMinutes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}
+
+{% macro bookingDetails(booking, room, postUrl) %}
+{% if booking %}
+<table class="booking-details-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Room</td>
+            <td>{{ room.name }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{ booking.description }}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{ booking.name }}</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>{{ booking.start | asReadableDate }}</td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td>{{ booking.start | hoursAndMinutes }} - {{ booking.end | hoursAndMinutes }}</td>
+        </tr>
+    </tbody>
+</table>
+<form class="" action="{{ postUrl }}" method="post">
+    <input type="hidden" name="bookedRoom" value="{{ booking._id }}">
+    <input class="button" type="submit" name="submit" value="Delete booking">
+</form>
+{% else %}
+    <p class="lede">Booking not found</p>
+    <a class="button" href="/choose">Choose a room</a>
+    {{ typography.paragraph('Booking not found', 'lede') }}
+    {{ typography.link('Choose a room', '/choose', 'button') }}
+{% endif %}
+{% endmacro %}

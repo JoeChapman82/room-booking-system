@@ -64,6 +64,23 @@ module.exports = {
         })
         .catch(error => redirects.goneWrong(req, res));
     },
+    findByParams: (req, res, next) => {
+        let queryObject;
+        if(req.query.by === 'description') {
+            let regex = new RegExp(req.query.search, "i");
+            queryObject = {$or : [{name: regex}, {description: regex}]};
+        } else if(req.query.room) {
+
+        } else {
+            return redirects.goneWrong(req, res);
+        }
+        find.byParams(queryObject)
+        .then(response => {
+            res.locals.results = response;
+            return next();
+        })
+        .catch(error => redirects.goneWrong(req, res));
+    },
     remove: (req, res, next) => {
         const toRemove = req.body.bookedRoom ? req.body.bookedRoom : req.params.id;
         remove.byId(toRemove)

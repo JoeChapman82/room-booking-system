@@ -1,0 +1,17 @@
+.results-table {
+  table-layout: fixed;
+}
+
+.results-table td {
+    padding-right: 3rem;
+}
+
+@media screen and(max-width: 900px) {
+    .results-table {
+        table-layout: auto;
+    }
+
+    .results-table td {
+        padding-right: 1rem;
+    }
+}

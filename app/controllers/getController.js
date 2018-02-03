@@ -18,10 +18,13 @@ module.exports = {
 
     // admin GETS
     adminHome: [renders.adminHome],
+    adminBooking: [queryBooking.findById, queryRoom.findById, renders.adminBooking],
+    adminCancelBooking: [queryBooking.remove, redirects.adminBookingCancelled],
+    adminBookingCancelled: [renders.adminBookingCancelled],
     adminCreateRoom: [renders.adminCreateRoom],
     adminEditRoom: [queryRoom.findAll, renders.adminEditRoom],
     adminInviteUser: [renders.adminInviteUser],
-    adminSearchResults: [renders.adminSearchResults],
+    adminSearchResults: [queryBooking.findByParams, renders.adminSearchResults],
     adminNoResults: [renders.adminNoResults],
 
     // super GETS

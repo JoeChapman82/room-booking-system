@@ -9,6 +9,8 @@ module.exports = {
     goneWrong: (req, res) => res.render('errors/somethings-gone-wrong'),
     // admin renders
     adminHome: (req, res) => res.render('admin/home'),
+    adminBooking: (req, res) => res.render('admin/booking'),
+    adminBookingCancelled: (req, res) => res.render('admin/booking-cancelled'),
     adminCreateRoom: (req, res) => res.render('admin/create-room'),
     adminEditRoom: (req, res) => res.render('admin/edit-room'),
     adminInviteUser: (req, res) => res.render('admin/invite-user'),

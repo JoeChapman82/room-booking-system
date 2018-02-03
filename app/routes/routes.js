@@ -5,6 +5,12 @@ module.exports = (app) => {
     // admin routes
     app.get('/admin/home', getController.adminHome);
 
+    app.get('/admin/booking/:id', getController.adminBooking);
+
+    app.get('/admin/cancel-booking/:id', getController.adminCancelBooking);
+
+    app.get('/admin/booking-cancelled', getController.adminBookingCancelled);
+
     app.get('/admin/create-room', getController.adminCreateRoom);
     app.post('/admin/create-room', postController.adminCreateRoom);
 
