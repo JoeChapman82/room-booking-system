@@ -2,6 +2,7 @@ module.exports = {
     // base redirects
     index: (req, res) => res.redirect('/'),
     choose: (req, res) => res.redirect('/choose'),
+    book: (req, res) => res.redirect(`/book/${req.params.id}`),
     changeBookDate: (req, res) => res.redirect(`/book/${req.params.id}?dateDay=${req.body.dateDay}&dateMonth=${req.body.dateMonth}&dateYear=${req.body.dateYear}`),
     bookCancel: (req, res) => res.redirect(`/book/${req.params.id}`),
     cancelled: (req, res) => res.redirect('/cancelled'),
