@@ -3,7 +3,7 @@ const renders = require('../../controllers/renders');
 const addErrorMessage = require('../../helpers/addErrorMessage');
 
 module.exports = (req, res, next) => {
-    if(validator.isEmpty(req.body.email) || !validator.isEmail(req.body.email)) {
+    if(typeof req.body.email === 'undefined' || validator.isEmpty(req.body.email) || !validator.isEmail(req.body.email)) {
         addErrorMessage(res, 'email', 'provide a valid email');
     }
     if(!res.locals.errors) {

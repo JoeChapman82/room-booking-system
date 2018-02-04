@@ -4,13 +4,13 @@ const addErrorMessage = require('../../helpers/addErrorMessage');
 
 module.exports = (req, res, next) => {
     req.body.equipment = Array.isArray(req.body.equipment) ? req.body.equipment : [req.body.equipment];
-    if(validator.isEmpty(req.body.name)) {
+    if(typeof req.body.name === 'undefined' || validator.isEmpty(req.body.name)) {
         addErrorMessage(res, 'name', 'provide a room name');
     }
-    if(validator.isEmpty(req.body.sitting)) {
+    if(typeof req.body.sitting === 'undefined' || validator.isEmpty(req.body.sitting)) {
         addErrorMessage(res, 'sitting', 'provide sitting capacity');
     }
-    if(validator.isEmpty(req.body.standing)) {
+    if(typeof req.body.standing === 'undefined' || validator.isEmpty(req.body.standing)) {
         addErrorMessage(res, 'standing', 'provide standing capacity');
     }
     if(!res.locals.errors) {

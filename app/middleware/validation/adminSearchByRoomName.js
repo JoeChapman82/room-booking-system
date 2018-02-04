@@ -4,7 +4,7 @@ const redirects = require('../../controllers/redirects');
 const addErrorMessage = require('../../helpers/addErrorMessage');
 
 module.exports = (req, res, next) => {
-    if(validator.isEmpty(req.body.searchByRoomName)) {
+    if(typeof req.body.searchByRoomName === 'undefined' || validator.isEmpty(req.body.searchByRoomName)) {
         addErrorMessage(res, 'name', 'provide a room name');
     }
     if(!res.locals.errors) {

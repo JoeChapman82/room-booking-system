@@ -3,11 +3,11 @@ const renders = require('../../controllers/renders');
 const addErrorMessage = require('../../helpers/addErrorMessage');
 
 module.exports = (req, res, next) => {
-    if(validator.isEmpty(req.body.email) || !validator.isEmail(req.body.email)) {
+    if(typeof req.body.email === 'undefined' || validator.isEmpty(req.body.email) || !validator.isEmail(req.body.email)) {
         addErrorMessage(res, 'email', 'provide a valid email');
     }
-    if(validator.isEmpty(req.body.password) || req.body.password.length < 8) {
-        addErrorMessage(res, 'password', 'provide your password');
+    if(typeof req.body.password === 'undefined' || validator.isEmpty(req.body.password) || req.body.password.length < 8) {
+        addErrorMessage(res, 'password', 'provide a valid password');
     }
     if(!res.locals.errors) {
         return next();
