@@ -3,7 +3,7 @@
 {% import "nunjucks/macros/tables.njk" as tables %}
 {% import "nunjucks/macros/forms.njk" as forms %}
 {% import "nunjucks/macros/messages.njk" as messages %}
-
+{% import "nunjucks/macros/navigation.njk" as navigation %}
 
 {% block page_title %}Book a room{% endblock %}
 
@@ -26,7 +26,7 @@
 
     <div class="column-two-thirds">
         {% include 'nunjucks/partials/date-picker.njk' %}
-        {% include 'nunjucks/partials/date-navigation.njk' %}
+        {{ navigation.previousNextDates('/book/' + room._id, previousDay, nextDay) }}
         {% include "nunjucks/partials/calendar.njk" %}
     </div>
 

@@ -6,6 +6,7 @@ module.exports = {
     superCreate: booking.superCreate,
     findById: booking.findById,
     findDaysBookings: booking.findDaysBookings,
+    findDaysBookingsAllRooms: booking.findDaysBookingsAllRooms,
     findByParams: booking.findByParams,
     remove: booking.remove,
     clearHistoric: booking.clearHistoric,

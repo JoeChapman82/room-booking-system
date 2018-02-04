@@ -1,0 +1,17 @@
+{% extends "nunjucks/templates/govuk_template.njk" %}
+{% import "nunjucks/macros/typography.njk" as typography %}
+{% import "nunjucks/macros/tables.njk" as tables %}
+{% import "nunjucks/macros/navigation.njk" as navigation %}
+
+{% block page_title %}Overview{% endblock %}
+
+{% block pre_content %}
+    {{ typography.mainHeading(today.formattedDate)}}
+{% endblock %}
+
+{% block content %}
+    <div class="column-full">
+        {{ navigation.previousNextDates('/overview', previousDay, nextDay) }}
+        {{ tables.roomOverview(bookings, today) }}
+    </div>
+{% endblock %}

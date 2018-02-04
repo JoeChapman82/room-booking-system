@@ -5,6 +5,7 @@ module.exports = (app) => {
     // general
     app.get('/', getController.index);
     app.get('/choose', getController.choose);
+    app.get('/overview', getController.overview);
     app.get('/book/:id', getController.book);
     app.post('/book/:id', postController.book);
     app.post('/change-book-date/:id', postController.changeBookDate);

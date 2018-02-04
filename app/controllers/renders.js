@@ -2,6 +2,7 @@ module.exports = {
     // base renders
     index: (req, res) => res.render('index'),
     choose: (req, res) => res.render('user/choose'),
+    overview: (req, res) => res.render('user/overview'),
     book: (req, res) => res.render('user/book'),
     cancel: (req, res) => res.render('user/cancel'),
     cancelled: (req, res) => res.render('user/cancelled'),

@@ -108,3 +108,32 @@
     {{ typography.link('Choose a room', '/choose', 'button') }}
 {% endif %}
 {% endmacro %}
+
+{% macro roomOverview(bookings, today) %}
+    <table class="rooms-overview-table">
+      <thead>
+        <tr>
+          <th>Room</th>
+          {% for hour in range(8, 20) %}
+          <th>{{ hour }}:00</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+          {% for key, value in bookings %}
+              <tr class="overview-row">
+                  <td><a href="/book/{{ value.id }}?dateDay={{ today.dateDay }}&dateMonth={{ today.dateMonth }}&dateYear={{ today.dateYear }}">{{ key }}</a></td>
+                  {% for hour in range(8, 20) %}
+                  <td>
+                      {% for quarter in value.hours[hour] %}
+                            {% if quarter === 1 %}
+                                <div class="o-b o-{{ loop.index }}">&nbsp;</div>
+                            {% endif %}
+                      {% endfor %}
+                  </td>
+                  {% endfor %}
+              </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+{% endmacro %}
