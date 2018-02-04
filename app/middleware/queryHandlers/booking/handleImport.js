@@ -2,11 +2,14 @@ const create = require('../../../model/booking/create');
 const addErrorMessage = require('../../../helpers/addErrorMessage');
 const redirects = require('../../../controllers/redirects');
 
-module.exports = (req, res, next) => (req, res, next) => {
+module.exports = (req, res, next) => {
+
     let bookings = JSON.parse(res.locals.jsonBookings);
     let writesMade = 0;
     let writesToMake = bookings.length;
+
     importBooking();
+
     function importBooking() {
         const booking = {
             room: res.locals.room._id,
@@ -29,4 +32,5 @@ module.exports = (req, res, next) => (req, res, next) => {
             return redirects.goneWrong(req, res);
         });
     }
+
 };

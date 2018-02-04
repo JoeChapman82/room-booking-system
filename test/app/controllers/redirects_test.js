@@ -22,6 +22,9 @@ describe('/app/controllers/redirects', () => {
     describe('index', () => {
         let req  = httpMocks.createRequest({});
         let res = httpMocks.createResponse();
+        res.status = () => {
+            return this;
+        };
         it('should perform a redirect to /', () => {
             redirects.index(req, res);
                 expect(res.statusCode).to.equal(302);

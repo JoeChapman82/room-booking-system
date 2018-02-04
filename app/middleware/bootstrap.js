@@ -33,11 +33,6 @@ module.exports = (app) => {
         watch: true
     });
 
-    app.use((req, res, next) => {
-        res.locals._csrf = 'imacsrftoken';
-        next();
-    });
-
     addNunjucksFilters(nunjucksEnv);
 
     app.use(cookieParser(process.env.COOKIE_SECRET || 'oops, forgot the var'));

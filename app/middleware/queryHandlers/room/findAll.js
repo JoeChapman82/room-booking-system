@@ -8,5 +8,8 @@ module.exports = (req, res, next) => {
         res.locals.rooms = response;
         next();
     })
-    .catch(error => console.log(error.message));
+    .catch(error => {
+        addErrorMessage(res, 'roomFind', 'error finding rooms');
+        return next();
+    });
 };
