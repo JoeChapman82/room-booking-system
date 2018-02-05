@@ -2,16 +2,19 @@
 {% import "nunjucks/macros/typography.njk" as typography %}
 {% import "nunjucks/macros/tables.njk" as tables %}
 {% import "nunjucks/macros/navigation.njk" as navigation %}
+{% import "nunjucks/macros/forms.njk" as forms %}
 
 {% block page_title %}Overview{% endblock %}
 
 {% block pre_content %}
-    {{ typography.mainHeading(today.formattedDate)}}
+    {{ typography.heading(today.formattedDate, '1', 'heading-xlarge')}}
 {% endblock %}
 
 {% block content %}
     <div class="column-full">
-        {{ navigation.previousNextDates('/overview', previousDay, nextDay) }}
+        {{ forms.mobileDp(today, '/overview') }}
+        {{ navigation.previousNextDates('/overview', previousDay, nextDay, true, today, '/overview') }}
+        {# {% include 'nunjucks/partials/date-picker.njk' %} #}
         {{ tables.roomOverview(bookings, today) }}
     </div>
 {% endblock %}

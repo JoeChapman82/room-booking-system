@@ -50,7 +50,7 @@ document.querySelectorAll('.time').forEach(function(time) {
 
 });
 
-document.querySelectorAll('.date-picker-input').forEach(function(input) {
+document.querySelectorAll('.date-picker-input, .dp-input').forEach(function(input) {
     input.addEventListener('blur', reloadOnDateChange);
 });
 
@@ -94,5 +94,15 @@ function revealHiddenOptions() {
     }
     if(document.getElementById(this.options[this.selectedIndex].dataset.target)) {
         document.getElementById(this.options[this.selectedIndex].dataset.target).classList.remove('js-hidden');
+    }
+}
+
+document.querySelectorAll('.overview-row').forEach(function(row) {
+    row.addEventListener('click', selectRoomFromOverview);
+});
+
+function selectRoomFromOverview(e) {
+    if(e.target.tagName !== 'A') {
+        document.getElementById(this.dataset.link).click();
     }
 }

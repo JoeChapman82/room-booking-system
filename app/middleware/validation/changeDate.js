@@ -19,6 +19,14 @@ module.exports = (req, res, next) => {
         if(!res.locals.errors) {
             return next();
         } else {
-            return redirects.book(req, res);
+            if(req.url === '/overview') {
+                let today = new Date();
+                req.body.dateDay = today.getDate();
+                req.body.dateMonth = today.getMonth() + 1;
+                req.body.dateYear = today.getFullYear();
+                return redirects.overview(req, res);
+            } else {
+                return redirects.book(req, res);
+            }
         }
 };

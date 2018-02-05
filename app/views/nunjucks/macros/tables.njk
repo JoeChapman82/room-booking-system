@@ -121,8 +121,8 @@
       </thead>
       <tbody>
           {% for key, value in bookings %}
-              <tr class="overview-row">
-                  <td><a href="/book/{{ value.id }}?dateDay={{ today.dateDay }}&dateMonth={{ today.dateMonth }}&dateYear={{ today.dateYear }}">{{ key }}</a></td>
+              <tr class="overview-row" data-link="overviewLink{{ loop.index }}">
+                  <td><a id="overviewLink{{ loop.index }}" href="/book/{{ value.id }}?dateDay={{ today.dateDay }}&dateMonth={{ today.dateMonth }}&dateYear={{ today.dateYear }}">{{ key }}</a></td>
                   {% for hour in range(8, 20) %}
                   <td>
                       {% for quarter in value.hours[hour] %}

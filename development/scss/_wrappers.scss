@@ -61,6 +61,29 @@
     stroke: $white;
 }
 
+.desktop-dp  {
+    position: relative;
+}
+
+.mobile-dp {
+    display: none;
+}
+
+.dp-wrapper {
+    width: auto;
+    display: inline-block;
+    position: absolute;
+    height: 100px;
+    left: 48%;
+    top: -10px;
+    transform: translate(-52%, 0);
+    padding: 0;
+}
+
+.mobile-dp .dp-wrapper {
+    position: relative;
+}
+
 @media screen and(max-width: 950px) {
     .file-upload-wrapper {
         width: 75%;
@@ -80,5 +103,14 @@
 
     .file-upload-wrapper input {
         width: 90%;
+    }
+}
+
+@media screen and(max-width: 780px) {
+    .desktop-dp  {
+        display: none;
+    }
+    .mobile-dp {
+        display: block;
     }
 }

@@ -21,6 +21,7 @@ module.exports = {
     changeBookDate: [validate.changeDate, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.changeBookDate],
     bookCancel: [queryBooking.remove, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.bookCancel],
     cancel: [queryBooking.remove, redirects.cancelled],
+    overview: [validate.changeDate, redirects.overview],
     login: [validate.login, queryUser.findToAuthenticate, passwordManager.comparePassword, assignToken.sessionToken, findHome],
 
     // admin POSTS
