@@ -8,9 +8,11 @@ const validate = require('../middleware/validate');
 const handleInitialUser = require('../middleware/handleInitialUser');
 
 module.exports = {
-    index: [redirects.choose],
+    // index: [redirects.choose],
+    index: [renders.index],
     choose: [queryRoom.findAll, renders.choose],
     overview: [populateDates, queryRoom.findAll, queryBooking.findDaysBookingsAllRooms, renders.overview],
+    check: [renders.check],
     book: [populateDates, queryRoom.findById, queryBooking.findDaysBookings, renders.book],
     cancel: [queryBooking.findById, queryRoom.findById, renders.cancel],
     cancelled: [renders.cancelled],

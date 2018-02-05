@@ -44,7 +44,8 @@ a.homepage-link {
     background-color: mix($govuk-blue, $grey-3, 80%);
 }
 
-.admin-home-option {
+.admin-home-option,
+.user-home-option {
     width: 100%;
     border: 2px solid $grey-1;
     height: 0;
@@ -64,12 +65,19 @@ a.homepage-link {
     background-size: 35%;
 }
 
-.admin-home-option:focus {
+a.admin-home-option:hover,
+a.user-home-option:hover {
+    background-color: mix($grey-2, $grey-4, 80%);
+}
+
+.admin-home-option:focus,
+.user-home-option:focus {
     background-color: mix($grey-3, $grey-4, 80%);
     border: 0;
 }
 
-a.admin-home-option {
+a.admin-home-option,
+a.user-home-option {
     color: $black;
 }
 
@@ -85,11 +93,32 @@ a.admin-home-option {
     background-image: url('/images/user.svg');
 }
 
+.choose-option {
+    background-image: url('/images/shopping.svg');
+}
+
+.overview-option {
+    background-image: url('/images/calendar.svg');
+}
+
+.check-option {
+    background-image: url('/images/book.svg');
+}
+
 .admin-user-view-link {
     margin: 0 .5rem;
 }
 
 .admin-user-view-link:visited {
+    color: $link-colour;
+}
+
+.available-room-link {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.available-room-link:visited {
     color: $link-colour;
 }
 

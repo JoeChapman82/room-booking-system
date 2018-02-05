@@ -177,3 +177,33 @@
     </div>
 </form>
 {% endmacro %}
+
+{% macro dp(errors) %}
+    <div class="form-group {% if errors.date %}form-group-error{% endif %} ">
+      <fieldset class="dp-fieldset">
+        <legend>
+            {% if errors.dateDay.msg %}
+            <span class="error-message">{{ errors.dateDay.msg }}</span>
+            {% elif errors.dateMonth.msg %}
+            <span class="error-message">{{ errors.dateMonth.msg }}</span>
+            {% elif errors.dateYear.msg %}
+            <span class="error-message">{{ errors.dateYear.msg }}</span>
+            {% endif %}
+        </legend>
+        <div class="form-date">
+          <div class="form-group form-group-day reduced-margin-form-group">
+            <label class="form-label-bold" for="dateDay">Day</label>
+            <input class="form-control {% if errors.dateDay %}form-control-error{% endif %}" id="dateDay" data-original="{{ today.dateDay }}" name="dateDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ today.dateDay }}">
+          </div>
+          <div class="form-group form-group-month reduced-margin-form-group">
+            <label class="form-label-bold" for="dateMonth">Month</label>
+            <input class="form-control {% if errors.dateMonth %}form-control-error{% endif %}" id="dateMonth" data-original="{{ today.dateMonth }}" name="dateMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ today.dateMonth }}">
+          </div>
+          <div class="form-group form-group-year reduced-margin-form-group">
+            <label class="form-label-bold" for="dateYear">Year</label>
+            <input class="form-control {% if errors.dateYear %}form-control-error{% endif %}" id="dateYear" data-original="{{ today.dateYear }}" name="dateYear" type="number" pattern="[0-9]*" min="0" max="2050" value="{{ today.dateYear }}">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+{% endmacro %}

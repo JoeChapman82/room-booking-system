@@ -7,14 +7,13 @@
 {% block page_title %}Overview{% endblock %}
 
 {% block pre_content %}
-    {{ typography.heading(today.formattedDate, '1', 'heading-xlarge')}}
+    {{ typography.link ('Main menu', '/', 'link-back') }}
 {% endblock %}
 
 {% block content %}
     <div class="column-full">
         {{ forms.mobileDp(today, '/overview') }}
         {{ navigation.previousNextDates('/overview', previousDay, nextDay, true, today, '/overview') }}
-        {# {% include 'nunjucks/partials/date-picker.njk' %} #}
         {{ tables.roomOverview(bookings, today) }}
     </div>
 {% endblock %}

@@ -7,6 +7,8 @@ module.exports = (app) => {
     app.get('/choose', getController.choose);
     app.get('/overview', getController.overview);
     app.post('/overview', postController.overview);
+    app.get('/check', getController.check);
+    app.post('/check', postController.check);
     app.get('/book/:id', getController.book);
     app.post('/book/:id', postController.book);
     app.post('/change-book-date/:id', postController.changeBookDate);

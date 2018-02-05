@@ -3,11 +3,27 @@
 {% import "nunjucks/macros/tables.njk" as tables %}
 
 {% block pre_content %}
-    {{ typography.mainHeading('Choose a room')}}
-    {{ typography.paragraph('This system is only for use by people based in Leeds One. All meetings must have someone in Leeds One attending', 'lede')}}
+    {{ typography.mainHeading('Leeds One Room Booking')}}
+    {{ typography.paragraph('This system is only for use by people based in Leeds One.', 'lede')}}
 {% endblock %}
 
 {% block content %}
-    {{ typography.heading('Leeds One', 2, 'heading heading-medium')}}
-    {{ tables.chooseRoom(rooms) }}
+<br>
+<div class="column-full">
+    <div class="user-home-wrapper">
+        <div class="user-home-options-wrapper">
+        <h2 class="heading-small no-margin-heading">Available options</h2>
+        <div class="column-third gutter-padding-right">
+            <a class="user-home-option choose-option" href="/choose">Choose</a>
+        </div>
+        <div class="column-third gutter-padding-right">
+            <a class="user-home-option overview-option" href="/overview">Overview</a>
+        </div>
+        <div class="column-third gutter-padding-right">
+            <a class="user-home-option check-option" href="/check">Find</a>
+        </div>
+        <div class="clearfix"></div>
+        </div>
+</div>
+</div>
 {% endblock %}

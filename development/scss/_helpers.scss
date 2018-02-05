@@ -11,6 +11,10 @@
     padding-right: $gutter;
 }
 
+.additional-margin-top {
+    margin-top: 2rem;
+}
+
 @media screen and(max-width: 640px) {
     padding-right: $gutter / 2;
 }

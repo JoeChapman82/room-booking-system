@@ -8,7 +8,7 @@
 {% block page_title %}Book a room{% endblock %}
 
 {% block pre_content %}
-    {{ typography.link ('Choose a room', '/choose', 'link-back') }}
+    {{ typography.link ('Main menu', '/', 'link-back') }}
 
     {% if booked %}
         {{ messages.bookingSuccess('/book-cancel/' + room._id, bookedRoom) }}

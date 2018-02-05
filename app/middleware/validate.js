@@ -10,6 +10,7 @@ const hasConflictingTimes = require('../helpers/hasConflictingTimes');
 module.exports = {
     choose: validation.choose,
     login: validation.login,
+    check: validation.check,
     changeDate: validation.changeDate,
     requestBooking: validation.requestBooking,
     adminCreateRoom: validation.adminCreateRoom,
