@@ -33,6 +33,7 @@
             {{ forms.hiddenInput('dateDay', today.dateDay) }}
             {{ forms.hiddenInput('dateMonth', today.dateMonth) }}
             {{ forms.hiddenInput('dateYear', today.dateYear) }}
+            {{ forms.hiddenInput('_csrf', _csrf) }}
             {{ forms.submitInput('Confirm') }}
             {{ typography.link('Cancel', '/parking-visitor', 'button secondary-button') }}
         </form>

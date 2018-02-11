@@ -124,7 +124,7 @@
 {% endmacro %}
 
 
-{% macro searchBox(id, label, value, error, hintText, submitValue, postUrl) %}
+{% macro searchBox(id, label, _csrf, value, error, hintText, submitValue, postUrl) %}
     <div class="column-half">
         <form action="{{ postUrl }}" method="post">
             <div class="search-box-wrapper">
@@ -145,13 +145,14 @@
 
                     </label>
                 </div>
+                {{ hiddenInput('_csrf', _csrf) }}
                 <input class="button search-submit" type="submit" name="submit" value="{{ submitValue }}">
             </div>
         </form>
     </div>
 {% endmacro %}
 
-{% macro mobileDp(today, postUrl) %}
+{% macro mobileDp(today, postUrl, _csrf) %}
 <form class="mobile-dp" action="{{ postUrl }}" method="post">
     <div class="dp-wrapper">
         <div class="form-group">
@@ -171,6 +172,7 @@
                 <input class="form-control dp-input" id="dateYear" data-original="{{ today.dateYear }}" name="dateYear" type="number" pattern="[0-9]*" min="0" max="2050" value="{{ today.dateYear }}">
               </div>
             </div>
+            {{ hiddenInput('_csrf', _csrf) }}
             <input id="changeDate" type="submit" class="button dp-submit" name="" value="Go">
           </fieldset>
         </div>
@@ -208,7 +210,7 @@
     </div>
 {% endmacro %}
 
-{% macro dpForm(today, postUrl) %}
+{% macro dpForm(today, postUrl, _csrf) %}
 <form action="{{ postUrl }}" method="post">
         <div class="form-group">
           <fieldset class="dp-fieldset">
@@ -227,6 +229,7 @@
                 <input class="form-control dp-input" id="dateYear" data-original="{{ today.dateYear }}" name="dateYear" type="number" pattern="[0-9]*" min="0" max="2050" value="{{ today.dateYear }}">
               </div>
             </div>
+            {{ hiddenInput('_csrf', _csrf) }}
             <input id="changeDate" type="submit" class="button dp-form-submit" name="" value="Go">
           </fieldset>
         </div>

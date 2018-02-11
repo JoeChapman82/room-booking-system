@@ -18,15 +18,14 @@ module.exports = {
         };
         const emailToSend = bookedTemplate(personalisation);
         const title = `Booked: ${res.locals.room.name}, ${req.body.date[0]}/${req.body.date[1]}/${req.body.date[2]}, ${req.body.FromHours}:${req.body.FromMinutes} - ${req.body.UntilHours}:${req.body.UntilMinutes}`;
-
-
+        next();
         nodemailerService(req.body.email, title, emailToSend)
         .then((response) => {
-            return next();
+            return null;
         })
         .catch((error) => {
             console.log(error);
-            return next();
+            return null;
         });
     },
     inviteEmail: (req, res, next) => {
@@ -63,14 +62,14 @@ module.exports = {
         const emailToSend = parkingTemplate(personalisation);
         const title = `Parking reserved: Space ${req.body.space}, ${req.body.dateDay}/${req.body.dateMonth}/${req.body.dateYear} for: ${req.body.name}`;
 
-
+        next();
         nodemailerService(req.body.email, title, emailToSend)
         .then((response) => {
-            return next();
+            return null;
         })
         .catch((error) => {
             console.log(error);
-            return next();
+            return null;
         });
     },
 };

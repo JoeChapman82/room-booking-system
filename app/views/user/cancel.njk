@@ -14,7 +14,7 @@
 {% block content %}
 
     <div class="column-two-thirds">
-        {{ tables.bookingDetails(booking, room, '/cancel') }}
+        {{ tables.bookingDetails(booking, room, '/cancel', _csrf) }}
     </div>
 
 {% endblock %}

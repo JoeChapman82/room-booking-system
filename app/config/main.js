@@ -4,4 +4,5 @@ module.exports = {
     saltRounds: 10,
     jwtLifespan: 144000, // 24 hours
     cookieLifespan: 36000000,
+    csrfLifespan: 3600 * 24, // 24 hours
 };

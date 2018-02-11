@@ -7,7 +7,7 @@ return `
 ${head}
 <body>
 <div class="header">
-    <p class="header-text">Leeds One Room Booking</p>
+    <h1 class="header-text">Leeds One Room Booking</h1>
 </div>
 	<div class="main">
 <h4>Greetings,</h4>

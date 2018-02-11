@@ -12,8 +12,8 @@
 
 {% block content %}
     <div class="column-full">
-        {{ forms.mobileDp(today, '/overview') }}
-        {{ navigation.previousNextDates('/overview', previousDay, nextDay, true, today, '/overview') }}
+        {{ forms.mobileDp(today, '/overview', _csrf) }}
+        {{ navigation.previousNextDates('/overview', previousDay, nextDay, _csrf, true, today, '/overview') }}
         {{ tables.roomOverview(bookings, today) }}
     </div>
 {% endblock %}

@@ -75,7 +75,7 @@
     </table>
 {% endmacro %}
 
-{% macro bookingDetails(booking, room, postUrl) %}
+{% macro bookingDetails(booking, room, postUrl, _csrf) %}
 {% if booking %}
 <table class="booking-details-table">
     <thead>
@@ -109,6 +109,7 @@
 </table>
 <form class="" action="{{ postUrl }}" method="post">
     <input type="hidden" name="bookedRoom" value="{{ booking._id }}">
+    <input type="hidden" name="_csrf" value="{{ _csrf }}">
     <input class="button" type="submit" name="submit" value="Delete booking">
 </form>
 {% else %}

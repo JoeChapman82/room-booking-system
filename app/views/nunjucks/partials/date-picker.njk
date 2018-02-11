@@ -27,6 +27,7 @@
                     <input value="{{ today.dateYear }}" class="form-control date-picker-input {% if errors.dateYear %}form-control-error{% endif %}" id="dateYear" name="dateYear" type="number" data-original="{{ today.dateYeay }}">
                 </div>
             </div>
+            {{ forms.hiddenInput('_csrf', _csrf) }}
             <input id="changeDate" type="submit" class="button date-picker-submit" name="submit" value="Change date">
         </fieldset>
     </div>

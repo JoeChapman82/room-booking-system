@@ -16,8 +16,8 @@
 {% block content %}
 
     <div class="column-two-thirds">
-        {{ forms.dpForm(today, '/parking-visitor')}}
-        {{ navigation.previousNextDates('/parking-visitor', previousDay, nextDay) }}
+        {{ forms.dpForm(today, '/parking-visitor', _csrf)}}
+        {{ navigation.previousNextDates('/parking-visitor', previousDay, nextDay, _csrf) }}
         {{ tables.availableVisitorParking(visitorParkings, '/parking-visitor', today) }}
     </div>
 

@@ -6,12 +6,12 @@ const head = `
             color: black;
         }
 		.main {
-			background-color: rgba(232, 232, 232, 1);
+            background-color: rgba(232, 232, 232, 1);
 			padding-top: 20px;
 			padding-bottom: 50px;
 			padding-left: 10px;
             padding-right: 10px;
-		}
+        }
         .header {
             background-color: black;
             width: 100%;
@@ -19,10 +19,14 @@ const head = `
 			padding: 10px;
             box-sizing: border-box;
         }
+		.header h1 {
+			padding: 0;
+			margin: 0;
+		}
         .footer {
             background-color: black;
             width: 100%;
-            height: 100px;
+            height: 50px;
         }
 		.header-text,
 		.footer-text {

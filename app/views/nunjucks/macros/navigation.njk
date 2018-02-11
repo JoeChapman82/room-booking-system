@@ -1,5 +1,5 @@
 {# This is truly awful #}
-{% macro previousNextDates(href, previousDay, nextDay, includeDatePicker, today, postUrl) %}
+{% macro previousNextDates(href, previousDay, nextDay, _csrf, includeDatePicker, today, postUrl) %}
 <nav role="navigation">
     <ul class="previous-next-navigation group">
         <li class="previous">
@@ -27,6 +27,7 @@
                         <input class="form-control dp-input" id="dateYear" name="dateYear" type="number" pattern="[0-9]*" value="{{ today.dateYear }}" data-original="{{ today.dateYear }}">
                       </div>
                     </div>
+                    <input type="hidden" name="_csrf" value="{{ _csrf }}">
                     <input id="changeDate" type="submit" class="button dp-submit" name="" value="Go">
                   </fieldset>
                 </div>

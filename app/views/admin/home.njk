@@ -11,8 +11,8 @@
 {% endblock %}
 
 {% block content %}
-    {{ forms.searchBox('searchByDescription', 'Search bookings by name or description', '', errors.searchByDescription, 'for example David or Sprint 3', 'Search', '/admin/search-by-description')}}
-    {{ forms.searchBox('searchByRoomName', 'Search bookings by room name', '', errors.searchByRoomName, 'for example 203 or 216', 'Search', '/admin/search-by-room')}}
+    {{ forms.searchBox('searchByDescription', 'Search bookings by name or description', _csrf, '', errors.searchByDescription, 'for example David or Sprint 3', 'Search', '/admin/search-by-description')}}
+    {{ forms.searchBox('searchByRoomName', 'Search bookings by room name', _csrf, '', errors.searchByRoomName, 'for example 203 or 216', 'Search', '/admin/search-by-room')}}
     <div class="column-full">
         <div class="admin-home-wrapper">
             <div class="admin-home-options-wrapper">

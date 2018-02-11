@@ -7,6 +7,7 @@
         {{ forms.hiddenInput('date', today.dateDay) }}
         {{ forms.hiddenInput('date', today.dateMonth) }}
         {{ forms.hiddenInput('date', today.dateYear) }}
+        {{ forms.hiddenInput('_csrf', _csrf) }}
         {{ forms.submitInput('submit') }}
     </form>
 </div>

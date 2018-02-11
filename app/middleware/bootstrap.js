@@ -8,8 +8,8 @@ const helmet = require('helmet');
 const express = require('express');
 const addNunjucksFilters = require('../helpers/addNunjucksFilters');
 const httpsRedirect = require('./httpsRedirect');
-
-// const config = require('../config/main');
+const csrf = require('csurf');
+const config = require('../config/main');
 
 module.exports = (app) => {
 
@@ -40,22 +40,20 @@ module.exports = (app) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded( {extended : false} ));
 
-    // app.use(csrf({cookie: {maxAge: config.csrfLifespan, httpOnly: true, signed: true, secure: true}}));
+    app.use(csrf({cookie: {maxAge: config.csrfLifespan, httpOnly: true, signed: true, secure: true}}));
 
-    // app.use((req, res, next) => {
-    //     res.locals._csrf = req.csrfToken();
-    //     next();
-    // });
+    app.use((req, res, next) => {
+        res.locals._csrf = req.csrfToken();
+        next();
+    });
 
-    // Handles the invalid csrf error to prevent dumping a stack trace
-    // app.use((err, req, res, next) => {
-    //     if (err.code !== 'EBADCSRFTOKEN') {
-    //         return next(err);
-    //     }
-    //         res.clearCookie('_csrf');
-    //         res.status(403);  // TODO need to move somethings gone wrong into unprotected routes - this will be a pain
-    //         res.redirect('/');
-    //     });
+    app.use((err, req, res, next) => {
+        if (err.code !== 'EBADCSRFTOKEN') {
+            return next(err);
+        }
+        res.clearCookie('_csrf');
+        res.redirect('/');
+    });
 
     return app;
 };

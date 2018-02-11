@@ -16,8 +16,8 @@
 {% block content %}
 
     <div class="column-two-thirds">
-        {{ forms.dpForm(today, '/parking-take')}}
-        {{ navigation.previousNextDates('/parking-take', previousDay, nextDay) }}
+        {{ forms.dpForm(today, '/parking-take', _csrf)}}
+        {{ navigation.previousNextDates('/parking-take', previousDay, nextDay, _csrf) }}
         {% if parkings.length === 0 %}
             <p class="strong">No available spaces today</p>
         {% else %}

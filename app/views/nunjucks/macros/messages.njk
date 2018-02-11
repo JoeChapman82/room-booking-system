@@ -1,10 +1,11 @@
-{% macro bookingSuccess(postUrl, roomId) %}
+{% macro bookingSuccess(postUrl, roomId, _csrf) %}
     <div class="success-summary" role="group" tabindex="-1">
         <form class="" action="{{ postUrl }}" method="post">
             <h2 class="heading-small success-summary-heading no-margin-heading" id="successSummary">Room booked</h2>
             <p><strong class="strong">You have have been sent a confirmation email. It will take about 5 minutes to arrive.</strong></p>
             <p>If you require visitors to be booked on site or VC equipment, you will need to do this separately.</p>
             <input type="hidden" name="bookedRoom" value="{{ roomId }}">
+            <input type="hidden" name="_csrf" value="{{ _csrf }}">
             <input class="button cancel-booking-button" type="submit" name="submit" value="Undo">
         </form>
     <div class="clearfix"></div>

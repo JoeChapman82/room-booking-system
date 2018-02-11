@@ -28,8 +28,9 @@
         <form action="/parking-take/{{ parking._id }}" method="post">
             {{ forms.textInputSmall('name', 'Your name', '', errors.name, true) }}
             {{ forms.textInputSmall('email', 'Your email', '', errors.email, true) }}
-            {{ forms.submitInput('Confirm') }}
             {{ forms.hiddenInput('id', parking._id) }}
+            {{ forms.hiddenInput('_csrf', _csrf) }}
+            {{ forms.submitInput('Confirm') }}
             {{ typography.link('Cancel', '/parking-take', 'button secondary-button') }}
         </form>
     </div>

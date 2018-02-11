@@ -9,7 +9,7 @@
 {% block pre_content %}
 {{ typography.link ('Back home', '/super/home', 'link-back') }}
 {% if booked %}
-    {{ messages.bookingSuccess('/super/create-booking', bookedRoom) }}
+    {{ messages.bookingSuccess('/super/create-booking', bookedRoom, _csrf) }}
 {% elif unbooked %}
     {{ messages.successMessage('Booking cancelled', 'Your booking has been removed') }}
 {% endif %}
