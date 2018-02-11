@@ -15,6 +15,8 @@ module.exports = (req, res, next) => {
         res.locals.dateDay = req.body.dateDay;
         res.locals.dateMonth = req.body.dateMonth;
         res.locals.dateYear = req.body.dateYear;
+        res.locals.from = `${req.body.FromHours}:${req.body.FromMinutes}`;
+        res.locals.until = `${req.body.UntilHours}:${req.body.UntilMinutes}`;
         return next();
     })
     .catch(error => redirects.goneWrong(req, res));

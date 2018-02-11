@@ -83,7 +83,6 @@ document.querySelectorAll('select').forEach(function(select) {
 });
 
 function revealHiddenOptions() {
-    console.log('ran');
     for(var i = 0; i < this.options.length; i++) {
         if(this.options[i].dataset.target) {
             var el = document.getElementById(this.options[i].dataset.target);
@@ -102,6 +101,16 @@ document.querySelectorAll('.overview-row').forEach(function(row) {
 });
 
 function selectRoomFromOverview(e) {
+    if(e.target.tagName !== 'A') {
+        document.getElementById(this.dataset.link).click();
+    }
+}
+
+document.querySelectorAll('.parking-row').forEach(function(row) {
+    row.addEventListener('click', selectParkingForConfirmation);
+});
+
+function selectParkingForConfirmation(e) {
     if(e.target.tagName !== 'A') {
         document.getElementById(this.dataset.link).click();
     }

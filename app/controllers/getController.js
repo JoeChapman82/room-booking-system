@@ -3,6 +3,7 @@ const renders = require('./renders');
 const populateDates = require('../middleware/populateDates');
 const queryRoom = require('../middleware/queryHandlers/room');
 const queryBooking = require('../middleware/queryHandlers/booking');
+const queryParking = require('../middleware/queryHandlers/parking');
 const queryUser = require('../middleware/queryHandlers/user');
 const validate = require('../middleware/validate');
 const handleInitialUser = require('../middleware/handleInitialUser');
@@ -16,6 +17,12 @@ module.exports = {
     book: [populateDates, queryRoom.findById, queryBooking.findDaysBookings, renders.book],
     cancel: [queryBooking.findById, queryRoom.findById, renders.cancel],
     cancelled: [renders.cancelled],
+    parkingGive: [renders.parkingGive],
+    parkingTake: [populateDates, queryParking.findDaysParkings, renders.parkingTake],
+    parkingTakeConfirm: [queryParking.findById, renders.parkingTakeConfirm],
+    parkingVisitor: [populateDates, queryParking.findDaysVisitorParkings, renders.parkingVisitor],
+    parkingVisitorConfirm: [validate.parkingVisitorConfirm, populateDates, queryParking.checkForDoubleBooking, renders.parkingVisitorConfirm],
+    parkingCancel: [validate.parkingCancel, queryParking.findById, renders.parkingCancel],
     login: [renders.login],
     goneWrong: [renders.goneWrong],
 

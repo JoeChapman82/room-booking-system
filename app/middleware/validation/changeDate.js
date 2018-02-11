@@ -25,6 +25,10 @@ module.exports = (req, res, next) => {
                 req.body.dateMonth = today.getMonth() + 1;
                 req.body.dateYear = today.getFullYear();
                 return redirects.overview(req, res);
+            } else if(req.url === '/parking-take') {
+                return redirects.parkingTake(req, res);
+            } else if(req.url === '/parking-visitor') {
+                return redirects.parkingVisitor(req, res);
             } else {
                 return redirects.book(req, res);
             }

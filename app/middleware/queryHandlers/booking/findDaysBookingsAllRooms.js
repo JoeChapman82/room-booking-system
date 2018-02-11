@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     const today = new Date(res.locals.today.date.getFullYear(), res.locals.today.date.getMonth(), res.locals.today.date.getDate());
     find.byDateRange(false, today, addDays(today, 1))
     .then(response => {
-        res.locals.bookings = generateBookingsForView(8, 20, res.locals.rooms, response);
+        res.locals.bookings = generateBookingsForView(8, 19, res.locals.rooms, response);
         return next();
     })
     .catch(error => {

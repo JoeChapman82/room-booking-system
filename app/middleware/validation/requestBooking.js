@@ -30,7 +30,7 @@ module.exports = (req, res, next) => {
             return redirects.index(req, res);
         }
         if(!res.locals.errors) { // only run this checks if there are no errors so far
-            if((parseInt(req.body.UntilHours) < parseInt(req.body.FromHours)) ||  (parseInt(req.body.UntilHours) === parseInt(req.body.FromHours) && parseInt(req.body.UntilMinutes) < parseInt(req.body.FromHours))) {
+            if((parseInt(req.body.UntilHours) < parseInt(req.body.FromHours)) ||  (parseInt(req.body.UntilHours) === parseInt(req.body.FromHours) && parseInt(req.body.UntilMinutes) < parseInt(req.body.FromMinutes))) {
                 addErrorMessage(res, 'UntilMinutes', 'avoid negative times');
                 addErrorMessage(res, 'UntilHours', '');
                 addErrorMessage(res, 'FromHours', '');

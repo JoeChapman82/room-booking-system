@@ -1,3 +1,13 @@
+{% macro tableHead(values) %}
+<thead>
+    <tr>
+        {% for value in values %}
+            <th>{{ value }}</th>
+        {% endfor %}
+    </tr>
+</thead>
+{% endmacro %}
+
 {% macro chooseRoom(rooms) %}
     <table>
       <thead>
@@ -114,7 +124,7 @@
       <thead>
         <tr>
           <th>Room</th>
-          {% for hour in range(8, 20) %}
+          {% for hour in range(8, 19) %}
           <th>{{ hour }}:00</th>
           {% endfor %}
         </tr>
@@ -123,7 +133,7 @@
           {% for key, value in bookings %}
               <tr class="overview-row" data-link="overviewLink{{ loop.index }}">
                   <td><a id="overviewLink{{ loop.index }}" href="/book/{{ value.id }}?dateDay={{ today.dateDay }}&dateMonth={{ today.dateMonth }}&dateYear={{ today.dateYear }}">{{ key }}</a></td>
-                  {% for hour in range(8, 20) %}
+                  {% for hour in range(8, 19) %}
                   <td>
                       {% for quarter in value.hours[hour] %}
                             {% if quarter === 1 %}
@@ -135,5 +145,39 @@
               </tr>
           {% endfor %}
       </tbody>
+    </table>
+{% endmacro %}
+
+{% macro availableParking(parkings, href) %}
+    <table>
+        {{ tableHead(['Space', 'Location', 'Given by'] )}}
+        <tbody>
+            {% for parking in parkings %}
+            <tr class="parking-row" data-link="parking-{{ loop.index }}">
+                <td><a class="available-parking-link" id="parking-{{ loop.index }}" href="{{ href }}/{{ parking._id }}">{{ parking.space }}</a></td>
+                <td>{{ parking.location }}</td>
+                <td>{{ parking.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}
+
+{% macro availableVisitorParking(parkings, href, today) %}
+    <table>
+        {{ tableHead(['Space', 'Availability', 'Taken by'] )}}
+        <tbody>
+            {% for key, value in parkings %}
+            <tr {% if value.available %}class="parking-row"{% else %}class="parking-row-taken"{% endif %} data-link="parking-{{ loop.index }}">
+                {% if value.available %}
+                <td><a class="available-parking-link" id="parking-{{ loop.index }}" href="{{ href }}/{{ key }}?dateDay={{ today.dateDay }}&dateMonth={{ today.dateMonth }}&dateYear={{ today.dateYear }}">{{ key }}</a></td>
+                {% else %}
+                <td>{{ key }}</td>
+                {% endif %}
+                <td>{% if value.available %}Available{% else %}In use{% endif %}</td>
+                <td>{{ value.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 {% endmacro %}

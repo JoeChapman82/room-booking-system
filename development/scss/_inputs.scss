@@ -26,8 +26,13 @@
 
 .dp-submit {
     position: absolute;
-    // vertical-align: middle;
     top: 44%;
+    font-size: 18px;
+}
+
+.dp-form-submit {
+    position: absolute;
+    bottom: 2px;
     font-size: 18px;
 }
 

@@ -7,6 +7,12 @@ module.exports = {
     book: (req, res) => res.render('user/book'),
     cancel: (req, res) => res.render('user/cancel'),
     cancelled: (req, res) => res.render('user/cancelled'),
+    parkingGive: (req, res) => res.render('user/parking-give'),
+    parkingTake: (req, res) => res.render('user/parking-take'),
+    parkingTakeConfirm: (req, res) => res.render('user/parking-take-confirm'),
+    parkingVisitor: (req, res) => res.render('user/parking-visitor'),
+    parkingVisitorConfirm: (req, res) => res.render('user/parking-visitor-confirm'),
+    parkingCancel: (req, res) => res.render('user/parking-cancel'),
     login: (req, res) => res.render('user/login'),
     goneWrong: (req, res) => res.render('errors/somethings-gone-wrong'),
     // admin renders

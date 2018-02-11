@@ -2,6 +2,8 @@
 {% import "nunjucks/macros/typography.njk" as typography %}
 {% import "nunjucks/macros/tables.njk" as tables %}
 
+{% block page_title %}Leeds One Booking - Home{% endblock %}
+
 {% block pre_content %}
     {{ typography.mainHeading('Leeds One Room Booking')}}
     {{ typography.paragraph('This system is only for use by people based in Leeds One.', 'lede')}}
@@ -9,10 +11,9 @@
 
 {% block content %}
 <br>
-<div class="column-full">
     <div class="user-home-wrapper">
         <div class="user-home-options-wrapper">
-        <h2 class="heading-small no-margin-heading">Available options</h2>
+        <h2 class="heading-small no-margin-heading">Room booking</h2>
         <div class="column-third gutter-padding-right">
             <a class="user-home-option choose-option" href="/choose">Choose</a>
         </div>
@@ -24,6 +25,19 @@
         </div>
         <div class="clearfix"></div>
         </div>
-</div>
-</div>
+    </div>
+    <div class="user-home-wrapper">
+        <h2 class="heading-small no-margin-heading">Car park</h2>
+        <div class="column-third gutter-padding-right">
+        <a class="user-home-option parking-give-option" href="/parking-give">Give</a>
+        </div>
+        <div class="column-third gutter-padding-right">
+        <a class="user-home-option parking-take-option" href="/parking-take">Take</a>
+        </div>
+        <div class="column-third gutter-padding-right">
+        <a class="user-home-option parking-visitor-option" href="/parking-visitor">Visitor</a>
+        </div>
+    <div class="clearfix"></div>
+
+    </div>
 {% endblock %}

@@ -33,6 +33,22 @@ module.exports = (req, res, next) => {
 
     res.locals.isBeforeToday = isDateBeforeToday(today);
 
+    if(req.query && req.query.from && req.query.until) {
+        res.locals.requiredTimes = {
+            fromHours: req.query.from.split(':')[0],
+            fromMinutes: req.query.from.split(':')[1],
+            untilHours: req.query.until.split(':')[0],
+            untilMinutes: req.query.until.split(':')[1],
+        };
+    } else if (req.body.FromHours && req.body.FromMinutes && req.body.UntilHours && req.body.UntilMinutes) {
+        res.locals.requiredTimes = {
+            fromHours: req.body.FromHours,
+            fromMinutes: req.body.FromMinutes,
+            untilHours: req.body.UntilHours,
+            untilMinutes: req.body.UntilMinutes,
+        };
+    }
+
     if(!isBody && !isQuery && !req.body.date) {
         let nowDate = new Date();
         if(nowDate.getHours() > 7 && nowDate.getHours() < 19) {

@@ -47,11 +47,16 @@
     margin-bottom: $gutter;
 }
 
-.admin-home-options-wrapper,
-.user-home-wrapper {
+.admin-home-options-wrapper {
     text-align: center;
     margin-bottom: $gutter;
     height: auto;
+}
+
+.user-home-wrapper {
+    border-radius: 0;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .search-box-input-wrapper {
@@ -84,6 +89,26 @@
 
 .mobile-dp .dp-wrapper {
     position: relative;
+}
+
+.grey-panel {
+    background-color: $grey-4;
+    border-right: 1px solid $grey-2;
+    border-top: 1px solid $grey-2;
+    border-bottom: 1px solid $grey-2;
+    line-height: 1;
+}
+
+.turquoise-panel {
+    background-color: $turquoise;
+    border-left: 5px solid $grey-1;
+    border-right: 1px solid $grey-2;
+    border-top: 1px solid $grey-2;
+    border-bottom: 1px solid $grey-2;
+    line-height: 1;
+    color: $white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 @media screen and(max-width: 950px) {

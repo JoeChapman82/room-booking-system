@@ -7,6 +7,8 @@ module.exports = {
     overview: (req, res) => res.redirect(`/overview?dateDay=${req.body.dateDay}&dateMonth=${req.body.dateMonth}&dateYear=${req.body.dateYear}`),
     bookCancel: (req, res) => res.redirect(`/book/${req.params.id}`),
     cancelled: (req, res) => res.redirect('/cancelled'),
+    parkingTake: (req, res) => res.redirect('/parking-take'),
+    parkingVisitor: (req, res) => res.redirect('/parking-visitor'),
     goneWrong: (req, res) => res.redirect('/errors/somethings-gone-wrong'),
     // admin redirects
     adminHome: (req, res) => res.redirect('/admin/home'),

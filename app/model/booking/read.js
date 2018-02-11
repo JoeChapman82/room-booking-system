@@ -2,6 +2,7 @@ const Booking = require('./booking');
 
 module.exports = {
     all: () => Booking.find(),
+    dump: () => Booking.find().populate({path: 'room', select: 'name'}),
     byId: (id) => Booking.findById(id),
     byParams: (params) => Booking.find(params).limit(50).populate({path: 'room', select: 'name'}),
     byDateRange: (id, start, end) => {

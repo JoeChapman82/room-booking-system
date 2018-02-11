@@ -4,6 +4,7 @@ const populateDates = require('../middleware/populateDates');
 const queryRoom = require('../middleware/queryHandlers/room');
 const queryBooking = require('../middleware/queryHandlers/booking');
 const queryUser = require('../middleware/queryHandlers/user');
+const queryParking = require('../middleware/queryHandlers/parking');
 const validate = require('../middleware/validate');
 const passwordManager = require('../middleware/passwordManager');
 const assignToken = require('../middleware/assignToken');
@@ -14,14 +15,21 @@ const handleUpload = require('../middleware/handleUpload');
 const csvConvert = require('../middleware/csvConvert');
 const clearDataFile = require('../middleware/clearDataFile');
 const sendBookedEmail = require('../middleware/sendBookedEmail');
-
+// Temp whilst waiting for notify
+const nodemailerHandler = require('../middleware/nodemailerHandler');
 
 module.exports = {
-    book: [populateDates, queryRoom.findById, queryBooking.findDaysBookings, validate.requestBooking, queryBooking.create, sendBookedEmail, renders.book],
-    check: [validate.check, queryRoom.findAll, queryBooking.findConflicts, renders.check],
+    book: [populateDates, queryRoom.findById, queryBooking.findDaysBookings, validate.requestBooking, queryBooking.create, nodemailerHandler.bookingEmail, renders.book],
+    check: [populateDates, validate.check, queryRoom.findAll, queryBooking.findConflicts, renders.check],
     changeBookDate: [validate.changeDate, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.changeBookDate],
     bookCancel: [queryBooking.remove, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.bookCancel],
     cancel: [queryBooking.remove, redirects.cancelled],
+    parkingGive: [validate.parkingGive, queryParking.create, renders.parkingGive],
+    parkingTake: [validate.changeDate, populateDates, renders.parkingTake],
+    parkingTakeConfirm: [queryParking.findById, validate.parkingTakeConfirm, queryParking.removeById, renders.parkingTakeConfirm],
+    parkingVisitor: [validate.changeDate, populateDates, queryParking.findDaysVisitorParkings, renders.parkingVisitor],
+    parkingVisitorConfirm: [populateDates, validate.parkingVisitorConfirm, queryParking.checkForDoubleBooking, queryParking.createVisitor, nodemailerHandler.parkingEmail, renders.parkingVisitorConfirm],
+    parkingCancel: [validate.parkingCancel, queryParking.removeById, renders.parkingCancel],
     overview: [validate.changeDate, redirects.overview],
     login: [validate.login, queryUser.findToAuthenticate, passwordManager.comparePassword, assignToken.sessionToken, findHome],
 
@@ -29,16 +37,15 @@ module.exports = {
     adminCreateRoom: [validate.adminCreateRoom, queryRoom.findByName, queryRoom.create, renders.adminCreateRoom],
     adminEditRoom: [queryRoom.findAll, validate.adminEditRoom, queryRoom.updateOne, queryRoom.findAll, renders.adminEditRoom],
     adminEditBooking: [queryBooking.findById, queryRoom.findById, validate.adminEditBooking, queryRoom.findAll, queryBooking.updateOne, queryBooking.findById, renders.adminBooking],
-    adminInviteUser: [validate.adminInviteUser, queryUser.findByEmail, assignToken.newUserToken, sendInviteEmail, renders.adminInviteUser],
+    adminInviteUser: [validate.adminInviteUser, queryUser.findByEmail, assignToken.newUserToken, nodemailerHandler.inviteEmail, renders.adminInviteUser],
     adminSearchByDescription: [validate.adminSearchByDescription, redirects.adminSearchResults],
     adminSearchByRoomName: [validate.adminSearchByRoomName, queryRoom.findByName, redirects.adminSearchResults],
-
 
     // super user POSTS
     superCreateBooking: [queryRoom.findAll, validate.superCreateBooking, queryBooking.superCreate, renders.superCreateBooking],
     superCreateRoom: [validate.superCreateRoom, queryRoom.findByName, queryRoom.create, renders.superCreateRoom],
     superEditRoom: [queryRoom.findAll, validate.superEditRoom, queryRoom.updateOne, queryRoom.findAll, renders.superEditRoom],
-    superInviteUser: [validate.superInviteUser, queryUser.findByEmail, assignToken.newUserToken, sendInviteEmail, renders.superInviteUser],
+    superInviteUser: [validate.superInviteUser, queryUser.findByEmail, assignToken.newUserToken, nodemailerHandler.inviteEmail, renders.superInviteUser],
     superSeed: [handleUpload, csvConvert, queryRoom.findByName, queryBooking.handleImport, clearDataFile, renders.superSeed],
     superClearOldBookings: [queryBooking.clearHistoric, renders.superClearOldBookings],
     //logout

@@ -6,12 +6,14 @@ module.exports = (req, res, next) => {
         res.locals.errors = {email: {msg: 'User already has an account'}};
         return next();
     }
-    return next();
     // let param = encodeURIComponent(res.locals.newUserToken);
     // let link = `${process.env.NODE_URI}/new-user?token=${param}`;
+    // console.log(link);
     // const personalisation = {
     //     link: link
     // };
+    return next();
+
     // notify.sendEmail(mainConfig.inviteTemplate, req.body.email, {personalisation: personalisation})
     // .then(response => {
     //     res.locals.invited = true;

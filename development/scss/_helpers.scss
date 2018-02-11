@@ -15,6 +15,16 @@
     margin-top: 2rem;
 }
 
+.half-width {
+    width: 50%;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
 @media screen and(max-width: 640px) {
-    padding-right: $gutter / 2;
+    .half-width {
+        width: 100%;
+    }
 }

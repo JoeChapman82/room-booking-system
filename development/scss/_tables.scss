@@ -71,6 +71,15 @@
     left: 75%;
 }
 
+.parking-row:hover {
+    background-color: $grey-3;
+    cursor: pointer;
+}
+
+.parking-row-taken {
+    background-color: rgba(255, 0, 0, .2);
+}
+
 @media screen and(max-width: 900px) {
     .results-table {
         table-layout: auto;
