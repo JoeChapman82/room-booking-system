@@ -8,7 +8,6 @@ const helmet = require('helmet');
 const express = require('express');
 const addNunjucksFilters = require('../helpers/addNunjucksFilters');
 const httpsRedirect = require('./httpsRedirect');
-const csrf = require('csurf');
 const config = require('../config/main');
 
 module.exports = (app) => {
@@ -40,20 +39,4 @@ module.exports = (app) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded( {extended : false} ));
 
-    app.use(csrf({cookie: {maxAge: config.csrfLifespan, httpOnly: true, signed: true, secure: true}}));
-
-    app.use((req, res, next) => {
-        res.locals._csrf = req.csrfToken();
-        next();
-    });
-
-    app.use((err, req, res, next) => {
-        if (err.code !== 'EBADCSRFTOKEN') {
-            return next(err);
-        }
-        res.clearCookie('_csrf');
-        res.redirect('/');
-    });
-
-    return app;
 };

@@ -2,7 +2,7 @@ const create = require('../../../model/booking/create');
 const addErrorMessage = require('../../../helpers/addErrorMessage');
 
 module.exports = (req, res, next) => {
-        const booking = {
+        const booking = res.locals.apiBooking || {
             room: req.body.room,
             start: new Date(req.body.date[2], req.body.date[1] - 1, req.body.date[0], req.body.FromHours, req.body.FromMinutes),
             end: new Date(req.body.date[2], req.body.date[1] - 1, req.body.date[0], req.body.UntilHours, req.body.UntilMinutes),
