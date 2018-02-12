@@ -25,7 +25,7 @@ module.exports = {
     bookCancel: [queryBooking.remove, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.bookCancel],
     cancel: [queryBooking.remove, redirects.cancelled],
     parkingGive: [validate.parkingGive, queryParking.create, renders.parkingGive],
-    parkingTake: [validate.changeDate, populateDates, renders.parkingTake],
+    parkingTake: [validate.changeDate, populateDates, queryParking.findDaysParkings, renders.parkingTake],
     parkingTakeConfirm: [queryParking.findById, validate.parkingTakeConfirm, queryParking.removeById, renders.parkingTakeConfirm],
     parkingVisitor: [validate.changeDate, populateDates, queryParking.findDaysVisitorParkings, renders.parkingVisitor],
     parkingVisitorConfirm: [populateDates, validate.parkingVisitorConfirm, queryParking.checkForDoubleBooking, queryParking.createVisitor, nodemailerHandler.parkingEmail, renders.parkingVisitorConfirm],
