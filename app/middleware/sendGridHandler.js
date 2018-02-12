@@ -21,7 +21,6 @@ module.exports = {
         next();
         sendGridService(req.body.email, title, emailToSend)
         .then((response) => {
-            console.log(response);
             return null;
         })
         .catch((error) => {

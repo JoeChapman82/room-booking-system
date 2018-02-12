@@ -10,7 +10,7 @@
 {% block pre_content %}
     {{ typography.link ('Visitor parking', '/parking-visitor', 'link-back') }}
     {% if taken %}
-    {{ messages.successMessage('Parking spot booked', 'Your have reserved the parking space.', 'Sadly, email is again out of action. Will be fixed tomorrow.', 'Return to menu', '/') }}
+    {{ messages.successMessage('Parking spot booked', 'Your have reserved the parking space.', 'A confirmation email has been sent. A link to cancel is included in the email.', 'Return to menu', '/') }}
     {% elif alreadyTaken %}
     {{ messages.errorMessage('That space appears to be taken', 'The space you\'re trying to book is already taken.', 'Use the link below to return to the visitor overview.', 'Return', '/parking-visitor') }}
     {% else %}
