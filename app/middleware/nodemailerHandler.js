@@ -6,27 +6,28 @@ const parkingTemplate = require('../content/emails/parking');
 
 module.exports = {
     bookingEmail: (req, res, next) => {
-        let param = encodeURIComponent(res.locals.booking._id);
-        const personalisation = {
-            cancelLink: `${process.env.NODE_URI}/cancel/${param}`,
-            name: req.body.name,
-            roomName: res.locals.room.name,
-            bookedDate: `${req.body.date[0]}/${req.body.date[1]}/${req.body.date[2]}`,
-            bookedFrom: `${req.body.FromHours}:${req.body.FromMinutes}`,
-            bookedUntil: `${req.body.UntilHours}:${req.body.UntilMinutes}`,
-            bookingDescription: req.body.reason
-        };
-        const emailToSend = bookedTemplate(personalisation);
-        const title = `Booked: ${res.locals.room.name}, ${req.body.date[0]}/${req.body.date[1]}/${req.body.date[2]}, ${req.body.FromHours}:${req.body.FromMinutes} - ${req.body.UntilHours}:${req.body.UntilMinutes}`;
         next();
-        nodemailerService(req.body.email, title, emailToSend)
-        .then((response) => {
-            return null;
-        })
-        .catch((error) => {
-            console.log(error);
-            return null;
-        });
+        // let param = encodeURIComponent(res.locals.booking._id);
+        // const personalisation = {
+        //     cancelLink: `${process.env.NODE_URI}/cancel/${param}`,
+        //     name: req.body.name,
+        //     roomName: res.locals.room.name,
+        //     bookedDate: `${req.body.date[0]}/${req.body.date[1]}/${req.body.date[2]}`,
+        //     bookedFrom: `${req.body.FromHours}:${req.body.FromMinutes}`,
+        //     bookedUntil: `${req.body.UntilHours}:${req.body.UntilMinutes}`,
+        //     bookingDescription: req.body.reason
+        // };
+        // const emailToSend = bookedTemplate(personalisation);
+        // const title = `Booked: ${res.locals.room.name}, ${req.body.date[0]}/${req.body.date[1]}/${req.body.date[2]}, ${req.body.FromHours}:${req.body.FromMinutes} - ${req.body.UntilHours}:${req.body.UntilMinutes}`;
+        // next();
+        // nodemailerService(req.body.email, title, emailToSend)
+        // .then((response) => {
+        //     return null;
+        // })
+        // .catch((error) => {
+        //     console.log(error);
+        //     return null;
+        // });
     },
     inviteEmail: (req, res, next) => {
         if(res.locals.user !== null) {
@@ -52,24 +53,25 @@ module.exports = {
         });
     },
     parkingEmail: (req, res, next) => {
-        let param = encodeURIComponent(res.locals.visitor._id);
-        const personalisation = {
-            cancelLink: `${process.env.NODE_URI}/parking-cancel/${param}`,
-            name: req.body.name,
-            date: `${req.body.dateDay}/${req.body.dateMonth}/${req.body.dateYear}`,
-            space: req.body.space
-        };
-        const emailToSend = parkingTemplate(personalisation);
-        const title = `Parking reserved: Space ${req.body.space}, ${req.body.dateDay}/${req.body.dateMonth}/${req.body.dateYear} for: ${req.body.name}`;
-
         next();
-        nodemailerService(req.body.email, title, emailToSend)
-        .then((response) => {
-            return null;
-        })
-        .catch((error) => {
-            console.log(error);
-            return null;
-        });
+        // let param = encodeURIComponent(res.locals.visitor._id);
+        // const personalisation = {
+        //     cancelLink: `${process.env.NODE_URI}/parking-cancel/${param}`,
+        //     name: req.body.name,
+        //     date: `${req.body.dateDay}/${req.body.dateMonth}/${req.body.dateYear}`,
+        //     space: req.body.space
+        // };
+        // const emailToSend = parkingTemplate(personalisation);
+        // const title = `Parking reserved: Space ${req.body.space}, ${req.body.dateDay}/${req.body.dateMonth}/${req.body.dateYear} for: ${req.body.name}`;
+        //
+        // next();
+        // nodemailerService(req.body.email, title, emailToSend)
+        // .then((response) => {
+        //     return null;
+        // })
+        // .catch((error) => {
+        //     console.log(error);
+        //     return null;
+        // });
     },
 };
