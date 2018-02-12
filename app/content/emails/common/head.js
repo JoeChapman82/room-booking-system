@@ -34,7 +34,7 @@ const head = `
             font-size: 24px;
 		}
         .details {
-            line-height: 35%;
+            line-height: 100%;
         }
     </style>
 </head>

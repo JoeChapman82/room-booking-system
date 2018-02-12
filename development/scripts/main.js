@@ -56,7 +56,20 @@ document.querySelectorAll('.date-picker-input, .dp-input').forEach(function(inpu
 
 function reloadOnDateChange() {
     if(this.value !== this.dataset.original) {
+        console.log('here now');
         document.getElementById('changeDate').click();
+    }
+}
+
+// poor fix for bad code :(
+document.querySelectorAll('.mobile-dp-input').forEach(function(input) {
+    input.addEventListener('blur', reloadOnDateChangeMobile);
+});
+
+function reloadOnDateChangeMobile() {
+    if(this.value !== this.dataset.original) {
+        console.log('here now');
+        document.getElementById('changeDateMobile').click();
     }
 }
 

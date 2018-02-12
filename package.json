@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/JoeChapman82/room-booking-system#readme",
   "dependencies": {
+    "@sendgrid/mail": "^6.2.1",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
