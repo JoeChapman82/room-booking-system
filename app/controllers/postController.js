@@ -16,7 +16,7 @@ const csvConvert = require('../middleware/csvConvert');
 const clearDataFile = require('../middleware/clearDataFile');
 const sendBookedEmail = require('../middleware/sendBookedEmail');
 // Temp whilst waiting for notify
-const nodemailerHandler = require('../middleware/nodemailerHandler');
+// const nodemailerHandler = require('../middleware/nodemailerHandler');
 const sendGridHandler = require('../middleware/sendGridHandler');
 
 module.exports = {
