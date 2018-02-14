@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "NODE_ENV=testing nyc mocha --recursive",
+    "package": "zip -r room-booking-${VERSION}.zip app app.js package.json package-lock.json && mv ./room-booking-${VERSION}.zip ../releases",
     "testing": "nodemon --exec 'NODE_ENV=testing nyc mocha --recursive'"
   },
   "repository": {
