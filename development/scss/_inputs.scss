@@ -47,3 +47,9 @@
     margin-top: 1rem;
     width: 100%;
 }
+
+@media screen and(max-width: 640px) {
+  .dp-form-submit {
+      width: 20%;
+  }
+}

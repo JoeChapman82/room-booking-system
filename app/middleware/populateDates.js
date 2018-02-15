@@ -1,6 +1,7 @@
 const addDays = require('../helpers/addDays');
 const isDateBeforeToday = require('../helpers/isDateBeforeToday');
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 module.exports = (req, res, next) => {
     const isQuery = (req.query.dateYear && req.query.dateMonth && req.query.dateDay);
@@ -21,14 +22,16 @@ module.exports = (req, res, next) => {
         dateYear: previousDay.getFullYear(),
         dateMonth: previousDay.getMonth() + 1,
         dateDay: previousDay.getDate(),
-        formattedDate: `${previousDay.getDate()} ${months[previousDay.getMonth()]}`
+        formattedDate: `${previousDay.getDate()} ${months[previousDay.getMonth()]}`,
+        day: days[previousDay.getDay()]
     };
     res.locals.nextDay = {
         date: nextDay,
         dateYear: nextDay.getFullYear(),
         dateMonth: nextDay.getMonth() + 1,
         dateDay: nextDay.getDate(),
-        formattedDate: `${nextDay.getDate()} ${months[nextDay.getMonth()]}`
+        formattedDate: `${nextDay.getDate()} ${months[nextDay.getMonth()]}`,
+        day: days[nextDay.getDay()]
     };
 
     res.locals.isBeforeToday = isDateBeforeToday(today);

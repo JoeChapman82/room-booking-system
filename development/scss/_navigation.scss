@@ -27,9 +27,27 @@
 .previous {
     float: left;
     margin-left: -2rem;
+    position: relative;
 }
 
 .next {
+    position: relative;
     float: right;
     margin-right: -2rem;
+}
+
+.next-day-day {
+  position: absolute;
+  bottom: 0;
+  right: 2.8em;
+  line-height: .8;
+  font-size: 70%;
+}
+
+.previous-day-day {
+  position: absolute;
+  bottom: 0;
+  left: 2.8em;
+  line-height: .8;
+  font-size: 70%;
 }
