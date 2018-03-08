@@ -1,9 +1,6 @@
-const requireDir = require('require-dir');
-const validation = requireDir('./validation/api', {recurse: true});
-
 module.exports = {
-    getRoom: validation.getRoom,
-    getBooking: validation.getBooking,
-    postBookings: validation.postBookings,
-    isValidRoom: validation.isValidRoom
+    getRoom: require('./validation/api/getRoom'),
+    getBooking: require('./validation/api/getBooking'),
+    postBookings: require('./validation/api/postBookings'),
+    isValidRoom: require('./validation/api/isValidRoom')
 };

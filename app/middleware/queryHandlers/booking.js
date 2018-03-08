@@ -1,16 +1,13 @@
-const requireDir = require('require-dir');
-const booking = requireDir('./booking', {recurse: true});
-
 module.exports = {
-    create: booking.create,
-    superCreate: booking.superCreate,
-    findById: booking.findById,
-    findDaysBookings: booking.findDaysBookings,
-    findConflicts: booking.findConflicts,
-    findDaysBookingsAllRooms: booking.findDaysBookingsAllRooms,
-    findByParams: booking.findByParams,
-    remove: booking.remove,
-    clearHistoric: booking.clearHistoric,
-    handleImport: booking.handleImport,
-    updateOne: booking.updateOne
+    create: require('./booking/create'),
+    superCreate: require('./booking/superCreate'),
+    findById: require('./booking/findById'),
+    findDaysBookings: require('./booking/findDaysBookings'),
+    findConflicts: require('./booking/findConflicts'),
+    findDaysBookingsAllRooms: require('./booking/findDaysBookingsAllRooms'),
+    findByParams: require('./booking/findByParams'),
+    remove: require('./booking/remove'),
+    clearHistoric: require('./booking/clearHistoric'),
+    handleImport: require('./booking/handleImport'),
+    updateOne: require('./booking/updateOne')
 };

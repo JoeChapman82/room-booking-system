@@ -1,10 +1,7 @@
-const requireDir = require('require-dir');
-const user = requireDir('./user', {recurse: true});
-
 module.exports = {
-    findAll: user.findAll,
-    findById: user.findById,
-    findByEmail: user.findByEmail,
-    findToAuthenticate: user.findToAuthenticate,
-    create: user.create
+    findAll: require('./user/findAll'),
+    findById: require('./user/findById'),
+    findByEmail: require('./user/findByEmail'),
+    findToAuthenticate: require('./user/findToAuthenticate'),
+    create: require('./user/create')
 };

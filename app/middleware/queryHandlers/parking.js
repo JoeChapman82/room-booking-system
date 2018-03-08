@@ -1,12 +1,9 @@
-const requireDir = require('require-dir');
-const parking = requireDir('./parking', {recurse: true});
-
 module.exports = {
-    create: parking.create,
-    createVisitor: parking.createVisitor,
-    findDaysParkings: parking.findDaysParkings,
-    findDaysVisitorParkings: parking.findDaysVisitorParkings,
-    checkForDoubleBooking: parking.checkForDoubleBooking,
-    findById: parking.findById,
-    removeById: parking.removeById
+    create: require('./parking/create'),
+    createVisitor: require('./parking/createVisitor'),
+    findDaysParkings: require('./parking/findDaysParkings'),
+    findDaysVisitorParkings: require('./parking/findDaysVisitorParkings'),
+    checkForDoubleBooking: require('./parking/checkForDoubleBooking'),
+    findById: require('./parking/findById'),
+    removeById: require('./parking/removeById')
 };
