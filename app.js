@@ -2,9 +2,11 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+const fs = require('fs');
 const api = express.Router();
 const path = require('path');
 const port = process.env.PORT || 3000;
+const https = require('https');
 const errorHandler = require(path.join(__dirname, '/app/middleware/errorHandler'));
 const authorisation = require(path.join(__dirname, '/app/middleware/authorisation'));
 const roleAuthorisation = require(path.join(__dirname, '/app/middleware/roleAuthorisation'));
@@ -16,6 +18,11 @@ const unprotectedRoutes = require(path.join(__dirname, '/app/routes/unprotectedR
 const apiRoutes = require(path.join(__dirname, '/app/routes/apiRoutes'));
 const routes = require(path.join(__dirname, '/app/routes/routes'));
 const dbConnect = require(path.join(__dirname, '/app/model/init'));
+
+// const serverOptions = {
+//     key: fs.readFileSync(process.env.CONTROLLER_KEY_FILE_PATH),
+//     cert: fs.readFileSync(process.env.CONTROLLER_CERT_FILE_PATH)
+// };
 
 dbConnect();
 
@@ -36,8 +43,9 @@ routes(app);
 app.all('*', (req, res) => res.redirect('/'));
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server listening on port: ${port} in ${process.env.NODE_ENV} mode`));
-
+// https.createServer(serverOptions, app).listen(port);
+app.listen(port, () => 'hg')
+console.log(`Express https server: listening on port ${port}`);
 // This system is hosted on heroku. All heroku apps are restarted daily so I
 // haven't wrapped these in a setInterval
 clearHistoricDbRecords();
