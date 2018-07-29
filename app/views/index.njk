@@ -5,8 +5,8 @@
 {% block page_title %}Leeds One Booking - Home{% endblock %}
 
 {% block pre_content %}
-    {{ typography.mainHeading('Leeds One Room Booking')}}
-    {{ typography.paragraph('This system is only for use by people based in Leeds One.', 'lede')}}
+    {{ typography.mainHeading(siteLocation + ' Room Booking')}}
+    {{ typography.paragraph('This system is only for use by people based in ' + siteLocation + '.', 'lede')}}
 {% endblock %}
 
 {% block content %}
@@ -26,6 +26,7 @@
         <div class="clearfix"></div>
         </div>
     </div>
+    {% if showParking %}
     <div class="user-home-wrapper">
         <h2 class="heading-small no-margin-heading">Car park</h2>
         <div class="column-third gutter-padding-right">
@@ -38,6 +39,6 @@
         <a class="user-home-option parking-visitor-option" href="/parking-visitor">Visitor</a>
         </div>
     <div class="clearfix"></div>
-
     </div>
+    {% endif %}
 {% endblock %}

@@ -7,7 +7,7 @@
 {% block pre_content %}
     {{ typography.link ('Main menu', '/', 'link-back') }}
     {{ typography.mainHeading('Choose a room')}}
-    {{ typography.paragraph('This system is only for use by people based in Leeds One. All meetings must have someone in Leeds One attending', 'lede')}}
+    {{ typography.paragraph('This system is only for use by people based in ' + siteLocation + '. All meetings must have someone in ' + siteLocation + ' attending', 'lede')}}
 {% endblock %}
 
 {% block content %}

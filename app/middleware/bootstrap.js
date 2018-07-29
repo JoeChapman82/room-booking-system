@@ -39,4 +39,8 @@ module.exports = (app) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded( {extended : false} ));
 
+    app.locals.showParking = process.env.SHOW_PARKING === 'true';
+    console.log(app.locals.showParking);
+    app.locals.siteLocation = process.env.SITE_LOCATION;
+
 };

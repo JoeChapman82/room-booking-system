@@ -15,12 +15,10 @@ const handleUpload = require('../middleware/handleUpload');
 const csvConvert = require('../middleware/csvConvert');
 const clearDataFile = require('../middleware/clearDataFile');
 const sendBookedEmail = require('../middleware/sendBookedEmail');
-// Temp whilst waiting for notify
-// const nodemailerHandler = require('../middleware/nodemailerHandler');
-const sendGridHandler = require('../middleware/sendGridHandler');
+const sendParkingEmail = require('../middleware/sendParkingEmail');
 
 module.exports = {
-    book: [populateDates, queryRoom.findById, queryBooking.findDaysBookings, validate.requestBooking, queryBooking.create, sendGridHandler.bookingEmail, renders.book],
+    book: [populateDates, queryRoom.findById, queryBooking.findDaysBookings, queryBooking.create, renders.book],
     check: [populateDates, validate.check, queryRoom.findAll, queryBooking.findConflicts, renders.check],
     changeBookDate: [validate.changeDate, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.changeBookDate],
     bookCancel: [queryBooking.remove, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.bookCancel],
@@ -29,7 +27,7 @@ module.exports = {
     parkingTake: [validate.changeDate, populateDates, queryParking.findDaysParkings, renders.parkingTake],
     parkingTakeConfirm: [queryParking.findById, validate.parkingTakeConfirm, queryParking.removeById, renders.parkingTakeConfirm],
     parkingVisitor: [validate.changeDate, populateDates, queryParking.findDaysVisitorParkings, renders.parkingVisitor],
-    parkingVisitorConfirm: [populateDates, validate.parkingVisitorConfirm, queryParking.checkForDoubleBooking, queryParking.createVisitor, sendGridHandler.parkingEmail, renders.parkingVisitorConfirm],
+    parkingVisitorConfirm: [populateDates, validate.parkingVisitorConfirm, queryParking.checkForDoubleBooking, queryParking.createVisitor, sendParkingEmail, renders.parkingVisitorConfirm],
     parkingCancel: [validate.parkingCancel, queryParking.removeById, renders.parkingCancel],
     overview: [validate.changeDate, redirects.overview],
     login: [validate.login, queryUser.findToAuthenticate, passwordManager.comparePassword, assignToken.sessionToken, findHome],
@@ -38,7 +36,7 @@ module.exports = {
     adminCreateRoom: [validate.adminCreateRoom, queryRoom.findByName, queryRoom.create, renders.adminCreateRoom],
     adminEditRoom: [queryRoom.findAll, validate.adminEditRoom, queryRoom.updateOne, queryRoom.findAll, renders.adminEditRoom],
     adminEditBooking: [queryBooking.findById, queryRoom.findById, validate.adminEditBooking, queryRoom.findAll, queryBooking.updateOne, queryBooking.findById, renders.adminBooking],
-    adminInviteUser: [validate.adminInviteUser, queryUser.findByEmail, assignToken.newUserToken, sendGridHandler.inviteEmail, renders.adminInviteUser],
+    adminInviteUser: [validate.adminInviteUser, queryUser.findByEmail, assignToken.newUserToken, sendInviteEmail, renders.adminInviteUser],
     adminSearchByDescription: [validate.adminSearchByDescription, redirects.adminSearchResults],
     adminSearchByRoomName: [validate.adminSearchByRoomName, queryRoom.findByName, redirects.adminSearchResults],
 
@@ -46,7 +44,7 @@ module.exports = {
     superCreateBooking: [queryRoom.findAll, validate.superCreateBooking, queryBooking.superCreate, renders.superCreateBooking],
     superCreateRoom: [validate.superCreateRoom, queryRoom.findByName, queryRoom.create, renders.superCreateRoom],
     superEditRoom: [queryRoom.findAll, validate.superEditRoom, queryRoom.updateOne, queryRoom.findAll, renders.superEditRoom],
-    superInviteUser: [validate.superInviteUser, queryUser.findByEmail, assignToken.newUserToken, sendGridHandler.inviteEmail, renders.superInviteUser],
+    superInviteUser: [validate.superInviteUser, queryUser.findByEmail, assignToken.newUserToken, sendInviteEmail, renders.superInviteUser],
     superSeed: [handleUpload, csvConvert, queryRoom.findByName, queryBooking.handleImport, clearDataFile, renders.superSeed],
     superClearOldBookings: [queryBooking.clearHistoric, renders.superClearOldBookings],
     //logout

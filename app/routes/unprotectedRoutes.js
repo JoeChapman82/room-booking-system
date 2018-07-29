@@ -17,18 +17,20 @@ module.exports = (app) => {
     app.post('/cancel', postController.cancel);
     app.get('/cancelled', getController.cancelled);
     // parking
-    app.get('/parking-give', getController.parkingGive);
-    app.post('/parking-give', postController.parkingGive);
-    app.get('/parking-take', getController.parkingTake);
-    app.post('/parking-take', postController.parkingTake);
-    app.get('/parking-take/:id', getController.parkingTakeConfirm);
-    app.post('/parking-take/:id', postController.parkingTakeConfirm);
-    app.get('/parking-visitor', getController.parkingVisitor);
-    app.post('/parking-visitor', postController.parkingVisitor);
-    app.get('/parking-visitor/:space', getController.parkingVisitorConfirm);
-    app.post('/parking-visitor/:space', postController.parkingVisitorConfirm);
-    app.get('/parking-cancel/:id', getController.parkingCancel);
-    app.post('/parking-cancel/:id', postController.parkingCancel);
+    if(app.locals.showParking) {
+        app.get('/parking-give', getController.parkingGive);
+        app.post('/parking-give', postController.parkingGive);
+        app.get('/parking-take', getController.parkingTake);
+        app.post('/parking-take', postController.parkingTake);
+        app.get('/parking-take/:id', getController.parkingTakeConfirm);
+        app.post('/parking-take/:id', postController.parkingTakeConfirm);
+        app.get('/parking-visitor', getController.parkingVisitor);
+        app.post('/parking-visitor', postController.parkingVisitor);
+        app.get('/parking-visitor/:space', getController.parkingVisitorConfirm);
+        app.post('/parking-visitor/:space', postController.parkingVisitorConfirm);
+        app.get('/parking-cancel/:id', getController.parkingCancel);
+        app.post('/parking-cancel/:id', postController.parkingCancel);
+    }
     // login
     app.get('/login', getController.login);
     app.post('/login', postController.login);
