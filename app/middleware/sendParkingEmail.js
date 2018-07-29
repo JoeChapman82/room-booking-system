@@ -2,7 +2,7 @@ const notify = require('../services/notify/notify');
 const mainConfig = require('../config/main');
 
 module.exports = (req, res, next) => {
-    let param = encodeURIComponent(res.locals.booking._id);
+    let param = encodeURIComponent(res.locals.visitor._id);
     const personalisation = {
         cancelLink: `${process.env.NODE_URI}/cancel/${param}`,
         name: req.body.name,

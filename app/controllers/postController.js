@@ -18,7 +18,7 @@ const sendBookedEmail = require('../middleware/sendBookedEmail');
 const sendParkingEmail = require('../middleware/sendParkingEmail');
 
 module.exports = {
-    book: [populateDates, queryRoom.findById, queryBooking.findDaysBookings, queryBooking.create, renders.book],
+    book: [populateDates, queryRoom.findById, queryBooking.findDaysBookings, validate.requestBooking, queryBooking.create, sendBookedEmail, renders.book],
     check: [populateDates, validate.check, queryRoom.findAll, queryBooking.findConflicts, renders.check],
     changeBookDate: [validate.changeDate, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.changeBookDate],
     bookCancel: [queryBooking.remove, populateDates, queryRoom.findById, queryBooking.findDaysBookings, redirects.bookCancel],

@@ -2,16 +2,15 @@ const notify = require('../services/notify/notify');
 const mainConfig = require('../config/main');
 
 module.exports = (req, res, next) => {
-    console.log('here');
     let param = encodeURIComponent(res.locals.booking._id);
     const personalisation = {
         cancelLink: `${process.env.NODE_URI}/cancel/${param}`,
         name: req.body.name,
         location: req.app.locals.siteLocation,
         roomName: res.locals.room.name,
-        bookedDate: res.locals.today.dateYear.toString(),
-        bookedFrom: res.locals.today.dateYear.toString(),
-        bookedUntil: res.locals.today.dateYear.toString(),
+        bookedDate: `${req.body.date[0]}/${req.body.date[1]}/${req.body.date[2]}`,
+        bookedFrom: `${req.body.FromHours}:${req.body.FromMinutes}`,
+        bookedUntil: `${req.body.UntilHours}:${req.body.UntilMinutes}`,
         bookingDescription: req.body.reason
     };
     console.log(personalisation.cancelLink);
