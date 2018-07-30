@@ -35,6 +35,7 @@ module.exports = (req, res, next) => {
         })
         .on('done', (error) => {
             if(error) {
+                console.log(error);
                 res.locals.errors = {converting: {msg: error}};
                 renders.superSeed(req, res);
             }  else {

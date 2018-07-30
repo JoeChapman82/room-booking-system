@@ -24,12 +24,22 @@
 
 .rooms-overview-table {
     table-layout: fixed;
+    width: 100%;
+    font-size: 80%;
 }
 
 .rooms-overview-table * {
     padding: 0;
     border: 0;
 }
+
+.rooms-overview-table tr th:nth-child(1) {
+    width: 18%;
+  }
+
+ .rooms-overview-table tr th:nth-child(1) td {
+     padding: 1rem;
+ }
 
 .rooms-overview-table tr {
     border-bottom: 1px solid mix($grey-1, $grey-2, 25%);
