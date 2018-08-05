@@ -2,7 +2,7 @@
 {% import "nunjucks/macros/typography.njk" as typography %}
 {% import "nunjucks/macros/tables.njk" as tables %}
 
-{% block page_title %}Leeds One Booking - Home{% endblock %}
+{% block page_title %}{{ siteLocation }} - Home{% endblock %}
 
 {% block pre_content %}
     {{ typography.mainHeading(siteLocation + ' Room Booking')}}

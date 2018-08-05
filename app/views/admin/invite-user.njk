@@ -18,7 +18,7 @@
 
 
     <div class="column-two-thirds">
-        {{ typography.paragraph('Invite a user to become an administrator of the Leeds One booking system. Enter their email address below.', 'lede additional-margin-heading') }}
+        {{ typography.paragraph('Invite a user to become an administrator of the ' + siteLocation +' booking system. Enter their email address below.', 'lede additional-margin-heading') }}
         <form class="" action="/admin/invite-user" method="post">
             {{ forms.textInputSmall('email', 'Email', '', errors.email, true) }}
             {{ forms.hiddenInput('_csrf', _csrf) }}
