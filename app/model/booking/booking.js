@@ -23,6 +23,9 @@ const BookingSchema = new Schema({
     room: {
         type: Schema.Types.ObjectId,
         ref: 'room',
+    },
+    message: {
+        type: String,
     }
 });
 
