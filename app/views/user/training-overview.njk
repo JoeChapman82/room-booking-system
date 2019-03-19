@@ -1,0 +1,41 @@
+{% extends "nunjucks/templates/govuk_template.njk" %}
+{% import "nunjucks/macros/typography.njk" as typography %}
+{% import "nunjucks/macros/tables.njk" as tables %}
+{% import "nunjucks/macros/forms.njk" as forms %}
+{% import "nunjucks/macros/messages.njk" as messages %}
+
+
+{% block page_title %}Book Training{% endblock %}
+
+{% block pre_content %}
+    <a href="/training-session" class="link-back">Return to select page</a>
+
+    {% for key, value in trainingSessions %}
+    <h2 class="strong heading-large">{{ key | asReadableDate }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name One</th>
+                <th>Name Two</th>
+                <th>Booked</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in value %}
+                <tr>
+                    <td>{% if item.nameOne === null or not item.nameOne %}-{% else %}{{ item.nameOne }}{% endif %}</td>
+                    <td>{% if item.nameTwo === null or not item.nameTwo %}-{% else %}{{ item.nameTwo }}{% endif %}</td>
+                    <td>{% if item.nameOne === null or not item.nameOne %} {% else %}X{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br />
+    {% endfor %}
+
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

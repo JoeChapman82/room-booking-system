@@ -14,6 +14,15 @@ module.exports = (nunjucksEnv) => {
         return formedDate;
     });
 
+    nunjucksEnv.addFilter('asDashedDateString', (date) => {
+        if(date === null || date === undefined) {
+            return;
+        }
+        date = new Date(date);
+        let formedDate = `${date.getDate()}-${date.getMonth() + 1 }-${date.getFullYear()}`;
+        return formedDate;
+    });
+
     nunjucksEnv.addFilter('asReadableDate', (date) => {
         let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         if(date === null || date === undefined) {

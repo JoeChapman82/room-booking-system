@@ -14,6 +14,10 @@ module.exports = {
     parkingVisitorConfirm: (req, res) => res.render('user/parking-visitor-confirm'),
     parkingCancel: (req, res) => res.render('user/parking-cancel'),
     login: (req, res) => res.render('user/login'),
+    trainingSession: (req, res) => res.render('user/training-session'),
+    trainingBook: (req, res) => res.render('user/training-book'),
+    trainingOverview: (req, res) => res.render('user/training-overview'),
+    trainingCancel: (req, res) => res.render('user/training-cancel'),
     goneWrong: (req, res) => res.render('errors/somethings-gone-wrong'),
     // admin renders
     adminHome: (req, res) => res.render('admin/home'),

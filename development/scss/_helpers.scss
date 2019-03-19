@@ -23,6 +23,15 @@
     margin: 0 auto;
 }
 
+.block {
+    display: block;
+}
+
+.small-padding {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
 @media screen and(max-width: 640px) {
     .half-width {
         width: 100%;

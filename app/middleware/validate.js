@@ -2,6 +2,7 @@ module.exports = {
     choose: require('./validation/choose'),
     login: require('./validation/login'),
     check: require('./validation/check'),
+    bookTraining: require('./validation/bookTraining'),
     parkingGive: require('./validation/parkingGive'),
     changeDate: require('./validation/changeDate'),
     requestBooking: require('./validation/requestBooking'),

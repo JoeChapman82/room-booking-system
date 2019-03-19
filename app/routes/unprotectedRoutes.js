@@ -31,6 +31,14 @@ module.exports = (app) => {
         app.get('/parking-cancel/:id', getController.parkingCancel);
         app.post('/parking-cancel/:id', postController.parkingCancel);
     }
+    if(app.locals.showTraining) {
+        app.get('/training-session', getController.trainingSession);
+        app.get('/training-session/:date', getController.trainingBook);
+        app.post('/training-session/:date', postController.trainingBook);
+        app.get('/training-overview', getController.trainingOverview);
+        app.get('/training-cancel/:id', getController.trainingCancel);
+        app.post('/training-cancel/:id', postController.trainingCancel);
+    }
     // login
     app.get('/login', getController.login);
     app.post('/login', postController.login);

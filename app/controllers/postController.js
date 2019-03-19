@@ -5,6 +5,7 @@ const queryRoom = require('../middleware/queryHandlers/room');
 const queryBooking = require('../middleware/queryHandlers/booking');
 const queryUser = require('../middleware/queryHandlers/user');
 const queryParking = require('../middleware/queryHandlers/parking');
+const queryTraining = require('../middleware/queryHandlers/training');
 const validate = require('../middleware/validate');
 const passwordManager = require('../middleware/passwordManager');
 const assignToken = require('../middleware/assignToken');
@@ -16,6 +17,7 @@ const csvConvert = require('../middleware/csvConvert');
 const clearDataFile = require('../middleware/clearDataFile');
 const sendBookedEmail = require('../middleware/sendBookedEmail');
 const sendParkingEmail = require('../middleware/sendParkingEmail');
+const sendTrainingEmail = require('../middleware/sendTrainingEmail');
 
 module.exports = {
     book: [populateDates, queryRoom.findById, queryBooking.findDaysBookings, validate.requestBooking, queryBooking.create, sendBookedEmail, renders.book],
@@ -31,6 +33,8 @@ module.exports = {
     parkingCancel: [validate.parkingCancel, queryParking.removeById, renders.parkingCancel],
     overview: [validate.changeDate, redirects.overview],
     login: [validate.login, queryUser.findToAuthenticate, passwordManager.comparePassword, assignToken.sessionToken, findHome],
+    trainingBook: [queryTraining.findByDate, validate.bookTraining, queryTraining.bookTraining, sendTrainingEmail, queryTraining.findByDate, renders.trainingBook],
+    trainingCancel: [queryTraining.updateById, renders.trainingCancel],
 
     // admin POSTS
     adminCreateRoom: [validate.adminCreateRoom, queryRoom.findByName, queryRoom.create, renders.adminCreateRoom],
