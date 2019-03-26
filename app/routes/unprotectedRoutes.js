@@ -35,7 +35,6 @@ module.exports = (app) => {
         app.get('/training-session', getController.trainingSession);
         app.get('/training-session/:date', getController.trainingBook);
         app.post('/training-session/:date', postController.trainingBook);
-        app.get('/training-overview', getController.trainingOverview);
         app.get('/training-cancel/:id', getController.trainingCancel);
         app.post('/training-cancel/:id', postController.trainingCancel);
     }

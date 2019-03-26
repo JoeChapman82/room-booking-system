@@ -15,6 +15,7 @@ module.exports = {
         });
     },
     comparePassword: (req, res, next) => {
+        console.log(req.body.password, res.locals.user.password);
         bcrypt.compare(req.body.password, res.locals.user.password)
         .then((response) => {
             if(response) {

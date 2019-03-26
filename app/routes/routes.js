@@ -26,6 +26,10 @@ module.exports = (app) => {
     app.get('/admin/search-results', getController.adminSearchResults);
     app.get('/admin/no-results', getController.adminNoResults);
 
+    app.get('/admin/training-overview', getController.adminTrainingOverview);
+    app.post('/admin/training-cancel', postController.adminTrainingCancel);
+
+
     // super routes
     app.get('/super/home', getController.superHome);
 

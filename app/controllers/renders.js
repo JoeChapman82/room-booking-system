@@ -16,7 +16,6 @@ module.exports = {
     login: (req, res) => res.render('user/login'),
     trainingSession: (req, res) => res.render('user/training-session'),
     trainingBook: (req, res) => res.render('user/training-book'),
-    trainingOverview: (req, res) => res.render('user/training-overview'),
     trainingCancel: (req, res) => res.render('user/training-cancel'),
     goneWrong: (req, res) => res.render('errors/somethings-gone-wrong'),
     // admin renders
@@ -27,6 +26,7 @@ module.exports = {
     adminEditRoom: (req, res) => res.render('admin/edit-room'),
     adminInviteUser: (req, res) => res.render('admin/invite-user'),
     adminSearchResults: (req, res) => res.render('admin/search-results'),
+    adminTrainingOverview: (req, res) => res.render('admin/training-overview'),
     adminNoResults: (req, res) => res.render('admin/no-results'),
     // super renders
     superHome: (req, res) => res.render('super/home'),

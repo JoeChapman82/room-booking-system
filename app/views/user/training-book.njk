@@ -17,12 +17,11 @@
     {{ typography.heading ('Book a training session', '1', 'heading-xlarge no-either-margin-heading' ) }}
 
     {% if availableSpots > 0 %}
-    {{ typography.paragraph('Enter the names of two participants. Sessions must be booked in pairs.', 'lede')}}
+    {{ typography.paragraph('Enter your details to book the session.', 'lede')}}
 
     {{ typography.paragraph('There are ' + availableSpots +' remaining spots for this date', 'margin-top')}}
     <form class="margin-top" action="/training-session/{{ sessionDate }}" method="post">
         {{ forms.textInputSmall('nameOne', 'First participant', '', errors.nameOne, true )}}
-        {{ forms.textInputSmall('nameTwo', 'Second participant', '', errors.nameTwo, true )}}
         {{ forms.textInputSmall('email', 'Your email address', '', errors.email, true )}}
         {{ forms.textInputSmall('date', 'Training date', sessionDate, errors.date, true, '', true )}}
         {{ forms.hiddenInput('_csrf', _csrf)}}

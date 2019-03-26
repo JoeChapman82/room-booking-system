@@ -13,9 +13,6 @@ const TrainingSchema = new Schema({
     },
     nameOne: {
         type: String,
-    },
-    nameTwo: {
-        type: String,
     }
 });
 

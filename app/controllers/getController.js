@@ -27,7 +27,6 @@ module.exports = {
     login: [renders.login],
     trainingSession: [queryTraining.countAllAvailable, renders.trainingSession],
     trainingBook: [queryTraining.findByDate, renders.trainingBook],
-    trainingOverview: [queryTraining.findAll, renders.trainingOverview],
     trainingCancel: [queryTraining.findById, renders.trainingCancel],
     goneWrong: [renders.goneWrong],
 
@@ -40,6 +39,7 @@ module.exports = {
     adminEditRoom: [queryRoom.findAll, renders.adminEditRoom],
     adminInviteUser: [renders.adminInviteUser],
     adminSearchResults: [queryBooking.findByParams, renders.adminSearchResults],
+    adminTrainingOverview: [queryTraining.findAll, renders.adminTrainingOverview],
     adminNoResults: [renders.adminNoResults],
 
     // super GETS

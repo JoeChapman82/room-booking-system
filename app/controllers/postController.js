@@ -43,6 +43,7 @@ module.exports = {
     adminInviteUser: [validate.adminInviteUser, queryUser.findByEmail, assignToken.newUserToken, sendInviteEmail, renders.adminInviteUser],
     adminSearchByDescription: [validate.adminSearchByDescription, redirects.adminSearchResults],
     adminSearchByRoomName: [validate.adminSearchByRoomName, queryRoom.findByName, redirects.adminSearchResults],
+    adminTrainingCancel: [queryTraining.updateById, queryTraining.findAll, renders.adminTrainingOverview],
 
     // super user POSTS
     superCreateBooking: [queryRoom.findAll, validate.superCreateBooking, queryBooking.superCreate, renders.superCreateBooking],

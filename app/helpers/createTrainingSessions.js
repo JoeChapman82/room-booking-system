@@ -1,6 +1,6 @@
 const findTraining = require('../model/training/read');
 const createTraining = require('../model/training/create');
-const sessionsPerDay = 6;
+const sessionsPerDay = 12;
 const dates = require('../config/trainingDates');
 
 module.exports = async () => {

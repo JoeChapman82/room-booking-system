@@ -34,7 +34,7 @@ module.exports = (app) => {
 
     addNunjucksFilters(nunjucksEnv);
 
-    app.use(cookieParser(process.env.COOKIE_SECRET || 'oops, forgot the var'));
+    app.use(cookieParser(process.env.COOKIE_SECRET || 'oops,forgot the var'));
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded( {extended : false} ));
