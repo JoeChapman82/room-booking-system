@@ -7,7 +7,9 @@
     "start": "node app.js",
     "test": "NODE_ENV=testing nyc mocha --recursive",
     "package": "zip -r room-booking-${VERSION}.zip app app.js package.json package-lock.json && mv ./room-booking-${VERSION}.zip ../releases",
-    "testing": "nodemon --exec 'NODE_ENV=testing nyc mocha --recursive'"
+    "testing": "nodemon --exec 'NODE_ENV=testing nyc mocha --recursive'",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -48,7 +50,8 @@
     "request-promise": "^4.2.2",
     "require-dir": "^0.3.2",
     "serve-favicon": "^2.4.5",
-    "validator": "^9.3.0"
+    "validator": "^9.3.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "browser-sync": "^2.23.6",
@@ -73,5 +76,6 @@
     "rewire": "^3.0.2",
     "run-sequence": "^2.2.1",
     "sinon": "^4.2.2"
-  }
+  },
+  "snyk": true
 }
