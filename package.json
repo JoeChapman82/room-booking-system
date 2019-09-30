@@ -35,7 +35,7 @@
     "express-nunjucks": "^2.2.3",
     "govuk_frontend_toolkit": "^6.0.4",
     "govuk_template_jinja": "^0.22.2",
-    "helmet": "^3.10.0",
+    "helmet": "^3.21.1",
     "jsonwebtoken": "^8.1.1",
     "moment": "^2.20.1",
     "mongoose": "^5.0.1",
