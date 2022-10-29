@@ -51,7 +51,7 @@
     "validator": "^9.3.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.23.6",
+    "browser-sync": "^2.27.10",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "govuk-elements-sass": "^3.1.2",
