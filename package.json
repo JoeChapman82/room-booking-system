@@ -25,7 +25,7 @@
   "homepage": "https://github.com/JoeChapman82/room-booking-system#readme",
   "dependencies": {
     "@sendgrid/mail": "^6.2.1",
-    "bcrypt": "^3.0.4",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
@@ -42,7 +42,7 @@
     "multer": "^1.3.0",
     "nodemailer": "^4.4.2",
     "notifications-node-client": "^4.1.0",
-    "nunjucks": "^3.0.1",
+    "nunjucks": "^3.2.1",
     "path": "^0.12.7",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
